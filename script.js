@@ -89,7 +89,7 @@ const canvas = $('#can')[0];
 
 const ctx = canvas.getContext('2d');
 
-const k = 9e9; // \frac{1}{4\pi\epsilon_0}
+const k = 4e-7*Math.PI; // \frac{1}{4\pi\epsilon_0}
 let charges = [];
 
 $("#btn_clear").on('click', e => {
@@ -128,9 +128,9 @@ function calculateField(x, y) {
         const r = Math.sqrt(r2);
         
         if (r > 0.01) {
-            const E = (k * charge.q) / r / r2;
-            Ex += dx * E;
-            Ey += dy * E;
+            const E = (k * charge.q) / (2*Math.PI)*r2;
+            Ey += -dx * E;
+            Ex += dy * E;
         }
     }
     return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
