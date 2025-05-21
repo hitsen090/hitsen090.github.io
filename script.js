@@ -127,7 +127,7 @@ function calculateField(x, y) {
         const r2 = dx * dx + dy * dy;
         const r = Math.sqrt(r2);
         
-        if (r > 0.01) {
+        if (r > 0) {
             const E = (k * charge.q) / (2*Math.PI)*r2;
             Ey += -dx * E;
             Ex += dy * E;
@@ -165,7 +165,7 @@ let workerCode = `
                         const dx = x - (charge.x + 5);
                         const dy = y - (charge.y + 5);
                         const r = Math.sqrt(dx * dx + dy * dy);
-                        if (r > 0.01) {
+                        if (r > 0) {
                             potential += (k * charge.q) / r;
                         }
                     }
