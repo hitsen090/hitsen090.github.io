@@ -1,6 +1,6 @@
 var I18N = {
 	'en': {
-		'h1': "Magnetic Field Simulation",
+		'h1': "Magneticc Field Simulation",
 		'author': "by dacoconutchemist",
 		'chargelabel': "Charge of the placed current:",
 		'howto-summary': "How to use",
