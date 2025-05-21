@@ -89,7 +89,7 @@ const canvas = $('#can')[0];
 
 const ctx = canvas.getContext('2d');
 
-const k = 4e-7*Math.PI; // \frac{1}{4\pi\epsilon_0}
+const k = Math.PI*(4e-7); // \frac{1}{4\pi\epsilon_0}
 let charges = [];
 
 $("#btn_clear").on('click', e => {
