@@ -338,6 +338,7 @@ async function render() {
         //performance.measure("arrows", "start-arrows", "end-arrows");
     }
     if (SETTINGS.drawField){
+        alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
         let heigth = ctx.height;
