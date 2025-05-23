@@ -344,10 +344,13 @@ async function render() {
         ctx.lineWidth = SETTINGS.fieldThickness;
         alert(canvasHeight+""+canvasWidth+"*");
         let fields = [];
-        for (i = 0; i < heigth; i++){
-          for (a = 0; a < width; a++){
+        for (i = 0; i < heigth; i+=5){
+          for (a = 0; a < width; a+=5){
             let f = calculateField(a, i);
             fields.push(f);
+          }
+          if (i % 100 == 0){
+            alert(i);
           }
         }
         alert(fields[10].x + "" + fields[10].y + "" + fields[10].posx + "" + fields[10].posy);
