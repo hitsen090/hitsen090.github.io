@@ -337,6 +337,7 @@ async function render() {
         //performance.mark("end-arrows");
         //performance.measure("arrows", "start-arrows", "end-arrows");
     }
+    alert(2);
     if (SETTINGS.drawField){
         alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
