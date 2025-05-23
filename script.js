@@ -342,18 +342,15 @@ async function render() {
         alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
-        alert(canvasHeight+""+canvasWidth+"*");
+        alert(canvasHeight+""+canvasWidth+"**");
         let fields = [];
-        for (i = 0; i < canvasHeight; i+=5){
-          for (a = 0; a < canvasWidth; a+=5){
+        for (i = 0; i < canvasHeight; i++){
+          for (a = 0; a < canvasWidth; a++){
             let f = calculateField(a, i);
             fields.push(f);
           }
-          if (i % 100 == 0){
-            alert(i);
-          }
         }
-        alert(fields[10].x + "" + fields[10].y + "" + fields[10].posx + "" + fields[10].posy);
+        alert(fields[10].x + " " + fields[10].y + " " + fields[10].posx + " " + fields[10].posy);
     }
   /*  if (SETTINGS.drawField) {
         //performance.mark("start-field");
