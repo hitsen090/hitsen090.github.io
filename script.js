@@ -344,6 +344,7 @@ async function render() {
         ctx.lineWidth = SETTINGS.fieldThickness;
         let heigth = ctx.height;
         let width = ctx.width;
+        alert(heigth+""+width);
         let fields = [];
         for (i = 0; i < heigth; i++){
           for (a = 0; a < width; a++){
