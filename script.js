@@ -342,9 +342,7 @@ async function render() {
         alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
-        let heigth = ctx.height;
-        let width = ctx.width;
-        alert(height+""+width+"*");
+        alert(canvasHeight+""+canvasWidth+"*");
         let fields = [];
         for (i = 0; i < heigth; i++){
           for (a = 0; a < width; a++){
