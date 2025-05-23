@@ -133,7 +133,7 @@ function calculateField(x, y) {
             Ex += dy * E;
         }
     }
-    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
+    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey), posx: x, posy: y};
 }
 
 let currentBg = null;
@@ -337,7 +337,20 @@ async function render() {
         //performance.mark("end-arrows");
         //performance.measure("arrows", "start-arrows", "end-arrows");
     }
-
+    if (SETTINGS.drawField){
+        ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
+        ctx.lineWidth = SETTINGS.fieldThickness;
+        let heigth = ctx.height;
+        let width = ctx.width;
+        let fields = [];
+        for (i = 0; i < heigth; i++){
+          for (a = 0; a < width; a++){
+            let f = calculateField(a, i);
+            fields.push(f);
+          }
+        }
+        alert(fields[10].x + "" + fields[10].y + "" + fields[10].posx + "" + fields[10].posy);
+    }
   /*  if (SETTINGS.drawField) {
         //performance.mark("start-field");
 
