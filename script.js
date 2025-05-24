@@ -351,6 +351,19 @@ async function render() {
           }
         }
         alert(fields.get("10,20").x + " " + fields.get("10,20").y);
+        let Px = 100;
+        let Py = 100;
+        let points = [];
+        ctx.beginPath();
+        ctx.moveTo(Px,Py);
+        let z = 0;
+        while (z < 300/*Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && points.includes(`${Px},${Py}`) == false*/){
+          let ho = fields.get(`${Px},${Py}`);
+          Px += 5*Math.cos(Math.atan2(ho.y/ho.x));
+          Py += 5*Math.cos(Math.atan2(ho.y/ho.x));
+          ctx.lineTo(Px,Py);
+          z++;
+        }
         
     }
   /*  if (SETTINGS.drawField) {
