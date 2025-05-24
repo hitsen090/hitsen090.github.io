@@ -342,12 +342,12 @@ async function render() {
         alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
-        alert(canvasHeight+""+canvasWidth+"****");
+        alert(canvasHeight+""+canvasWidth+"*****");
         let fields = new Map();
         for (i = 0; i < canvasHeight; i++){
           for (a = 0; a < canvasWidth; a++){
             let f = calculateField(a, i);
-            fields.set('${a},${i}', f);
+            fields.set(`${a},${i}`, f);
           }
         }
         alert(fields.get("10,20").x + " " + fields.get("10,20").y);
