@@ -342,7 +342,7 @@ async function render() {
         alert(1);
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
-        alert(canvasHeight+""+canvasWidth+"**");
+        alert(canvasHeight+""+canvasWidth+"***");
         let fields = new Map();
         for (i = 0; i < canvasHeight; i++){
           for (a = 0; a < canvasWidth; a++){
@@ -359,8 +359,8 @@ async function render() {
         let z = 0;
         while (z < 300/*Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && points.includes(`${Px},${Py}`) == false*/){
           let ho = fields.get(`${Px},${Py}`);
-          Px += 5*Math.cos(Math.atan2(ho.y/ho.x));
-          Py += 5*Math.cos(Math.atan2(ho.y/ho.x));
+          Px += 5*Math.cos(Math.atan2(ho.y,ho.x));
+          Py += 5*Math.sin(Math.atan2(ho.y,ho.x));
           ctx.lineTo(Px,Py);
           z++;
           if (z%10 == 0){
