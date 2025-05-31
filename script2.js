@@ -1,4 +1,5 @@
 // Array Remove - By John Resig (MIT Licensed)
+
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
   this.length = from < 0 ? this.length + from : from;
@@ -117,6 +118,24 @@ function getChargeRadius(i) {
     return Math.sqrt(Math.abs(charges[i].q) * 1e6) * 5
 }
 
+/*function calculateField(x, y) {
+    let Ex = 0;
+    let Ey = 0;
+    for (let i = 0; i < charges.length; i++) {
+        const charge = charges[i];
+        const dx = x - charge.x;
+        const dy = y - charge.y;
+        const r2 = dx * dx + dy * dy;
+        const r = Math.sqrt(r2);
+
+        if (r > 0.01) {
+            const E = (k * charge.q) / r / r2;
+            Ex += dx * E;
+            Ey += dy * E;
+        }
+    }
+    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
+}*/
 function calculateField(x, y) {
     let Ex = 0;
     let Ey = 0;
@@ -128,7 +147,7 @@ function calculateField(x, y) {
         const r = Math.sqrt(r2);
 
         if (r > 0) {
-            const E = (k * charge.q) / (2*Math.PI*r2);
+            const E = (k * charge.q*10e13) / (2*Math.PI*r2);
             Ey += -dx * E;
             Ex += dy * E;
         }
@@ -245,7 +264,10 @@ let workers = [];
 for (let i = 0; i < numWorkers; i++) workers.push(new Worker(workerURL));
 
 let p = 0;
-let kon = 10e14;
+let kon = 2;
+let density = 10;
+let uuu = 0;
+let ppp = [];
 async function render() {
     if (isRendering) return;
     isRendering = true;
@@ -343,27 +365,36 @@ async function render() {
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         ctx.lineWidth = SETTINGS.fieldThickness;
    //     alert(canvasHeight+""+canvasWidth+"***");
-        let fields = new Map();
+   /*     let fields = new Map();
+        let lines = new Map();
         let u = 0;
-        for (i = 0; i < canvasHeight; i++){
+        let min = 9999999999;
+        for (i = -2; i < canvasHeight+2; i++){
           let jo = new Map();
-          for (a = 0; a < canvasWidth; a++){
+          let jo2 = new Map();
+          for (a = -2; a < canvasWidth+2; a++){
             let f = calculateField(a, i);
             if(f.r > u){
               u = (f.r);
               iii = a;
               ii = i;
             }
+            if(f.r < min){
+                min = f.r;
+            }
             jo.set(a, f);
+            jo2.set(a,false);
           }
           fields.set(i,jo);
+          lines.set(i,jo2);
         }
         let bs = [];
         let points = [];
         let B = u*1;
-        for(let i = 0; i < 2; i++){
+        kon = 1/(5*min)-1/(5*B);
+        for(let i = 0; i < 1; i++){
             B = B/(kon*B+1);
-            bs.push(B)
+            bs.push(B);
         }
         for (i = 2; i < canvasHeight-2; i++){
           for (a = 2; a < canvasWidth-2; a++){
@@ -377,14 +408,15 @@ async function render() {
             let f7 = fields.get(i-1).get(a+1);
             let f8 = fields.get(i-1).get(a-1);
             outer: for (mo = 0; mo < bs.length; mo++){
-                if ((f1.r >= bs[mo] && f.r <= bs[mo]) || (f2.r >= bs[mo] && f.r <= bs[mo]) || (f3.r >= bs[mo] && f.r <= bs[mo]) || (f4.r >= bs[mo] && f.r <= bs[mo]) || (f5.r >= bs[mo] && f.r <= bs[mo]) || (f6.r >= bs[mo] && f.r <= bs[mo]) || (f7.r >= bs[mo] && f.r <= bs[mo]) || (f8.r >= bs[mo] && f.r <= bs[mo])){
+                if ((f1.r <= bs[mo] && f.r >= bs[mo]) || (f2.r <= bs[mo] && f.r >= bs[mo]) || (f3.r <= bs[mo] && f.r >= bs[mo]) || (f4.r <= bs[mo] && f.r >= bs[mo]) || (f5.r <= bs[mo] && f.r >= bs[mo]) || (f6.r <= bs[mo] && f.r >= bs[mo]) || (f7.r <= bs[mo] && f.r >= bs[mo]) || (f8.r <= bs[mo] && f.r >= bs[mo])){
                     points.push([a,i]);
+                    ppp.push([a,i]);
                     break outer;
                 }
             }
           }
         }
-  /*      for (i = 0; i < canvasHeight; i++){
+        for (i = 0; i < canvasHeight; i++){
           let f = calculateField(canvasWidth/2, i);
           if(f.r*1000000 > u){
             u = (f.r*1000000);
@@ -397,10 +429,15 @@ async function render() {
               u = (f.r*1000000);
             }
           fields.set(`${i},${canvasHeight/2}`, f);
-        }*/
-        if (p < 1){
+        }
+  if (p < 1){
             p ++;
-            alert(bs[0] + " " + bs[1] + " " + kon);
+  //          alert(points.length + " " + bs[0] + " " + bs[1] + " " + kon + lines.get(2).get(96));
+            let fff = "";
+            for(let i = 0; i < 5; i++){
+                fff += " " + points[i][0] + " " + points[i][1] +" " +calculateField(points[i][0],points[i][1]).r;
+            }
+            alert(bs[0] + fff);
    //         alert(fields.get(300).get(100).r + " " + calculateField(100,300).r);
         }
         
@@ -411,31 +448,157 @@ async function render() {
         for (i = 0; i < points.length; i++){
           Px = points[i][0];
           Py = points[i][1];
-          ctx.moveTo(Px,Py);
-          let z = 0;
-          while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 3000){
-            let ho = calculateField(Px,Py);
-            if (!ho){break;}
-            Px += 0.1*Math.cos(Math.atan2(ho.y,ho.x))
-            Py += 0.1*Math.sin(Math.atan2(ho.y,ho.x))
-            ctx.lineTo(Px,Py);
-            z++;
-          }
-          Px = points[i][0];
-          Py = points[i][1];
-          ctx.moveTo(Px,Py);
-          z = 0;
-          while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 30000){
-            let ho = calculateField(Px,Py);
-            if (!ho){break;}
-            Px += -0.1*Math.cos(Math.atan2(ho.y,ho.x))
-            Py += -0.1*Math.sin(Math.atan2(ho.y,ho.x))
-            ctx.lineTo(Px,Py);
-            z++;
+ //         alert (Px + " " + Py);
+          if(!lines.get(Py).get(Px)){
+            ctx.moveTo(Px,Py);
+            let z = 0;
+            while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 1000){
+              let ho = calculateField(Px,Py);
+              if (!ho){break;}
+              Px += 0.5*Math.cos(Math.atan2(ho.y,ho.x));
+              Py += 0.5*Math.sin(Math.atan2(ho.y,ho.x));
+              lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+              lines.get(Math.ceil(Py)).set(Math.ceil(Px),true);
+     //         ctx.lineTo(Px,Py);
+              z++;
+            }
+            Px = points[i][0];
+            Py = points[i][1];
+            ctx.moveTo(Px,Py);
+            z = 0;
+            while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z <1000){
+ //             if(z==100){alert(z);}
+              let ho = calculateField(Px,Py);
+              if (!ho){break;}
+//              lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+              Px += -0.5*Math.cos(Math.atan2(ho.y,ho.x));
+              Py += -0.5*Math.sin(Math.atan2(ho.y,ho.x));
+              lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+              lines.get(Math.ceil(Py)).set(Math.ceil(Px),true);
+    //          ctx.lineTo(Px,Py);
+              z++;
+            }
           }
         }
+        Px = 800;
+        Py = 200;
+        ctx.moveTo(Px,Py);
+        for(i=0; i < 1000; i++){
+            ho = calculateField(Px,Py);
+            Px += 0.5*Math.cos(Math.atan2(ho.y,ho.x)+3.1415/2);
+            Py += 0.5*Math.sin(Math.atan2(ho.y,ho.x) +3.1415/2);
+            ctx.lineTo(Px,Py);
+        }
+        Px = 800;
+        Py = 200;
+        ctx.moveTo(Px,Py);
+        for(i=0; i < 1000; i++){
+            ho = calculateField(Px,Py);
+            Px -= 0.5*Math.cos(Math.atan2(ho.y,ho.x)+3.1415/2);
+            Py -= 0.5*Math.sin(Math.atan2(ho.y,ho.x) +3.1415/2);
+            ctx.lineTo(Px,Py);
+        }
+        ctx.stroke();*/
+        let starts = [];
+        ctx.beginPath();
+     /*   for(i = 0; i < charges.length; i++){
+            let Px = charges[i].x;
+            let Py = charges[i].y;
+            for(a = 0; a < 9; a++){
+                let posX = Px + 10*Math.cos(a*Math.PI/4);
+                let posY = Py + 10*Math.sin(a*Math.PI/4);
+                let posXs = posX;
+                let posYs = posY;
+                let again = false;
+                let outof = false;
+                let zzz = 0;
+                let bFeld = 0;
+   //             ctx.moveTo(posX,posY);
+                while(posX > 0 && posY > 0 && posX < canvasWidth && posY < canvasHeight && !again && zzz < 1000){
+                  zzz++;
+                  ho = calculateField(posX,posY);
+                  if (!ho){break;}
+                  posX += 0.5*Math.cos(Math.atan2(ho.y,ho.x)+3.1415/2);
+                  posY += 0.5*Math.sin(Math.atan2(ho.y,ho.x) +3.1415/2);
+                  if (!outof && (posX-posXs)**2+(posY-posYs)**2 > 25){
+                      outof = true;
+                  }
+                  if(outof && (posX-posXs)**2+(posY-posYs)**2 < 25){
+                      again = true;
+                  }
+                  bFeld += ho.r;
+                  if(bFeld >= density){
+                      bFeld -= density;
+                      starts.push([posX,posY]);
+                  }
+  //                ctx.lineTo(posX,posY);
+                }
+                posX = Px + 10*Math.cos(a*Math.PI/4);
+                posY = Py + 10*Math.sin(a*Math.PI/4);
+                outof = false;
+                again = false;
+                bFeld = 0;
+                zzz = 0;
+  //              ctx.moveTo(posX,posY);
+                while(posX > 0 && posY > 0 && posX < canvasWidth && posY < canvasHeight && !again && zzz < 1000){
+                  zzz++;
+                  ho = calculateField(posX,posY);
+                  if (!ho){break;}
+                  posX -= 0.5*Math.cos(Math.atan2(ho.y,ho.x)+3.1415/2);
+                  posY -= 0.5*Math.sin(Math.atan2(ho.y,ho.x) +3.1415/2);
+                  if (!outof && (posX-posXs)**2+(posY-posYs)**2 > 25){
+                    outof = true;
+                  }
+                  if(outof && (posX-posXs)**2+(posY-posYs)**2 < 25){
+                    again = true;
+                  }
+                  bFeld += ho.r;
+                  if(bFeld >= density){
+                    bFeld -= density;
+                    starts.push([posX,posY]);
+                  }
+//                  ctx.lineTo(posX,posY);
+                }
+            }
+        }*/
+    /*    for (i = 0; i < starts.length; i++){
+              Px = starts[i][0];
+              Py = starts[i][1];
+        //         alert (Px + " " + Py);
+  //            if(!lines.get(Py).get(Px)){
+                ctx.moveTo(Px,Py);
+                let z = 0;
+                while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 1000){
+                  let ho = calculateField(Px,Py);
+                  if (!ho){break;}
+                  Px += 0.5*Math.cos(Math.atan2(ho.y,ho.x));
+                  Py += 0.5*Math.sin(Math.atan2(ho.y,ho.x));
+                  lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+                  lines.get(Math.ceil(Py)).set(Math.ceil(Px),true);
+         //         ctx.lineTo(Px,Py);
+                  z++;
+                }
+                Px = starts[i][0];
+                Py = starts[i][1];
+                ctx.moveTo(Px,Py);
+                z = 0;
+                while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z <1000){
+        //             if(z==100){alert(z);}
+                  let ho = calculateField(Px,Py);
+                  if (!ho){break;}
+        //              lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+                  Px += -0.5*Math.cos(Math.atan2(ho.y,ho.x));
+                  Py += -0.5*Math.sin(Math.atan2(ho.y,ho.x));
+                  lines.get(Math.floor(Py)).set(Math.floor(Px),true);
+                  lines.get(Math.ceil(Py)).set(Math.ceil(Px),true);
+        //          ctx.lineTo(Px,Py);
+                  z++;
+                }
+              }*/
+  //          }
         ctx.stroke();
     }
+}
   /*  if (SETTINGS.drawField) {
         //performance.mark("start-field");
 
@@ -546,6 +709,12 @@ $(canvas).on("mousedown", e => {
             }
         }
     }
+ /*   alert(calculateField(e.clientX, e.clientY).r + " " + ppp.length);
+    for(let i = 0; i < ppp.length; i++){
+        if(ppp[i][0] == e.clientX && ppp[i][1] == e.clientY){
+            alert(7);
+        }
+    }*/
     if (!chargeDragged) {
         if (e.button == 0 || e.button == 2) {
             charges.push({ x: mousePos.x, y: mousePos.y, q: SETTINGS.placedCharge * 1e-6 * (e.button == 0 ? 1 : -1) });
