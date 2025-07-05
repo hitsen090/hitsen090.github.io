@@ -34,7 +34,7 @@ const ctx = canvas.getContext('2d', { willReadFrequently: true });
 const ctxGUI = canvasGUI.getContext('2d');
 
 const k = 8.98755179e9; // \frac{1}{4\pi\epsilon_0}
-const m = 2e-7; // \frac{\mu_0}{2\pi} (yes, this turns out to be 2e-7 with a precision of 9 digits)
+const kM = Math.PI*4*10**-7; // \frac{\mu_0}{2\pi} (yes, this turns out to be 2e-7 with a precision of 9 digits)
 
 let charges = [];
 
