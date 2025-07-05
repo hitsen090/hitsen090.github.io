@@ -16,7 +16,7 @@ let listeners = [
         SETTINGS.placedCharge = (10**parseFloat(e.target.value)) / 2;
         updateJSI18N();
     }},
-    {sel: "#check_magnetic", type: "checkbox", var: "MAGNETIC", def: true, defVar: true},
+    {sel: "#check_magnetic", type: "checkbox", var: "MAGNETIC", def: false, defVar: false},
     {sel: "#voltage_mode", type: "checkbox", var: "voltageInftyMode", def: false, defVar: false},
     {sel: "#angle_mode", type: "checkbox", var: "angleDistanceMode", def: false, defVar: false},
     {sel: "#powerlinetool_arrows", type: "checkbox", var: "powerlineToolArrows", def: true, defVar: true},
