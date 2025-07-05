@@ -1,6 +1,6 @@
 var I18N = {
     'en': {
-        'h1': "Electric Field Simulation",
+        'h1': "Magnetic Field Simulation",
         'author': "by dacoconutchemist",
         'toolchoice': 'Tool: ',
         'chargelabel': "Charge of the placed particle:",
@@ -55,7 +55,7 @@ var I18N = {
         'clear_msgM': 'Delete existing wires? This action cannot be undone'
     },
     'ua': {
-        'h1': "Симуляція Електричного Поля",
+        'h1': "Симуляція Магнітного Поля",
         'author': "зроблено dacoconutchemist",
         'toolchoice': 'Інструмент: ',
         'chargelabel': "Заряд поставленої частинки:",
@@ -110,7 +110,7 @@ var I18N = {
         'clear_msgM': 'Видалити існуючі дроти? Цю дію неможливо відмінити'
     },
     'de': {
-        'h1': "Simulation des Elektrischen Feldes",
+        'h1': "Simulation des Magnetischen Feldes",
         'author': "von dacoconutchemist",
         'toolchoice': 'Instrument: ',
         'chargelabel': "Ladung des platzierten Teilchens:",
