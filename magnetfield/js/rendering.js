@@ -45,7 +45,7 @@ function calculateMagPotential(x, y) {
     return A;
 }
 
-function calculateMagField(x, y) {
+/*function calculateMagField(x, y) {
     let Bx = 0;
     let By = 0;
     for (let i = 0; i < charges.length; i++) {
@@ -62,6 +62,24 @@ function calculateMagField(x, y) {
     }
 
     return {x: Bx, y: By, r: Math.sqrt(Bx * Bx + By * By)};
+}*/
+function calculateMagField(x, y) {
+    let Ex = 0;
+    let Ey = 0;
+    for (let i = 0; i < charges.length; i++) {
+        const charge = charges[i];
+        const dx = x - charge.x;
+        const dy = y - charge.y;
+        const r2 = dx * dx + dy * dy;
+        const r = Math.sqrt(r2);
+
+        if (r >= 0.01) {
+            const E = (k * charge.q*10e13) / (2*Math.PI*r2);
+            Ey += -dx * E;
+            Ex += dy * E;
+        }
+    }
+    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey), posx: x, posy: y};
 }
 
 let isRendering = false;
