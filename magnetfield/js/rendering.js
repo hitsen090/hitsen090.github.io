@@ -1,4 +1,4 @@
-function calculatePotential(x, y) {
+/*function calculatePotential(x, y) {
     let potential = 0;
     for (let i = 0; i < charges.length; i++) {
         const charge = charges[i];
@@ -10,9 +10,9 @@ function calculatePotential(x, y) {
         }
     }
     return potential;
-}
+}*/
 
-function calculateField(x, y) {
+/*function calculateField(x, y) {
     let Ex = 0;
     let Ey = 0;
     for (let i = 0; i < charges.length; i++) {
@@ -29,9 +29,9 @@ function calculateField(x, y) {
         }
     }
     return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
-}
+}*/
 
-function calculateMagPotential(x, y) {
+function calculatePotential(x, y) {
     let A = 0;
     for (let i = 0; i < charges.length; i++) {
         const wire = charges[i];
@@ -63,7 +63,7 @@ function calculateMagPotential(x, y) {
 
     return {x: Bx, y: By, r: Math.sqrt(Bx * Bx + By * By)};
 }*/
-function calculateMagField(x, y) {
+function calculateField(x, y) {
     let Ex = 0;
     let Ey = 0;
     for (let i = 0; i < charges.length; i++) {
@@ -74,7 +74,7 @@ function calculateMagField(x, y) {
         const r = Math.sqrt(r2);
 
         if (r >= 0.01) {
-            const E = (k * charge.q*10e13) / (2*Math.PI*r2);
+            const E = (kM * charge.q*10e13) / (2*Math.PI*r2);
             Ey += -dx * E;
             Ex += dy * E;
         }
@@ -291,7 +291,7 @@ async function render() {
         const potsWidth = canvasWidth + 10;
         const potsHeight = canvasHeight + 10;
         // assign horizontal slices of the screen to workers
-        for (let i = 0; i < numWorkers; i++) {
+     /*   for (let i = 0; i < numWorkers; i++) {
             const startY = Math.floor(i * potsHeight / numWorkers);
             const endY = Math.floor((i + 1) * potsHeight / numWorkers);
             // pass data
@@ -305,7 +305,7 @@ async function render() {
                 charges,
                 k, kM
             });
-        }
+        }*/
         // wait for everyone to cook
         let maxAbsPot = -1;
         await Promise.all(workers.map(worker => new Promise(resolve => {
@@ -333,7 +333,7 @@ async function render() {
                 drawBg: SETTINGS.drawBg,
                 colorBgPos: SETTINGS.colorBgPos,
                 colorBgNeg: SETTINGS.colorBgNeg,
-                drawEquipotential: SETTINGS.drawEquipotential,
+                drawEquipotential: false,
                 colorsEquipotential: SETTINGS.colorsEquipotential,
                 equipLineOpacity: SETTINGS.equipLineOpacity,
                 canvasWidth,
