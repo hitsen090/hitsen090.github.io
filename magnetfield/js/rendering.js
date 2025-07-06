@@ -402,7 +402,7 @@ async function render() {
     }
 
     let deletenow = "";
-    if (SETTINGS.drawField){
+  /*  if (SETTINGS.drawField){
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
         density = 1250*4/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
@@ -571,7 +571,7 @@ async function render() {
           }
       }
       ctx.stroke();
-    }
+    }*/
     
     animateWithoutRequest();
 
