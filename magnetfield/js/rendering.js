@@ -116,7 +116,7 @@ let workerCode = `
             }
 
             postMessage(maxAbsPot);
-        } else */ /* if (TYPE == "bg") {
+        } else */ if (TYPE == "bg") {
             // background color calculation
 
             // pass all parameters and interpret the shared buffer as a float array
@@ -206,7 +206,7 @@ let workerCode = `
                 }
             }
             postMessage(' *microwave bell sound* ');
-        } else */ if (TYPE == "potentialM") {
+        } else /* if (TYPE == "potentialM") {
             // potential calculation
 
             // pass all parameters and interpret the shared buffer as a float array
@@ -246,7 +246,7 @@ let workerCode = `
             }
 
             postMessage(maxAbsPot);
-        }
+        }*/
     };
 `;
 const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
