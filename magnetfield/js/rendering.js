@@ -85,7 +85,7 @@ let workerCode = `
 
     onmessage = function(e) {
         let TYPE = e.data.TYPE;
-        if (TYPE == "potential") {
+        /* if (TYPE == "potential") {
             // potential calculation
 
             // pass all parameters and interpret the shared buffer as a float array
@@ -116,7 +116,7 @@ let workerCode = `
             }
 
             postMessage(maxAbsPot);
-        } else if (TYPE == "bg") {
+        } else */ if (TYPE == "bg") {
             // background color calculation
 
             // pass all parameters and interpret the shared buffer as a float array
