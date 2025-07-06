@@ -559,6 +559,7 @@ async function render() {
           }
       }
   //          }
+      if(p<1){alert(3);p++;}
       ctx.beginPath();
       let used = new Map()
       for(i = -1000; i < canvasWidth+1000; i++){
