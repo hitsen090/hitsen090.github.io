@@ -256,6 +256,11 @@ const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "applicatio
 let workers = [];
 for (let i = 0; i < numWorkers; i++) workers.push(new Worker(workerURL));
 
+let p = 0;
+let kon = 2;
+let density = 1250;
+let uuu = 0;
+let ppp = [];
 let fpsTimeout;
 async function render() {
     //performance.mark('renderStart');
