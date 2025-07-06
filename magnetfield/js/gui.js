@@ -168,11 +168,11 @@ $("#btn_reset").on('click', e => {
 $('#check_magnetic').on('change', e => {
     let magnetic = $('#check_magnetic').is(":checked");
     if (magnetic) {
-        $('.m-hidden').hide();
-        switchLanguage(LANG, true);
-    } else {
         $('.m-hidden').show();
         switchLanguage(LANG, false);
+    } else {
+        $('.m-hidden').hide();
+        switchLanguage(LANG, true);
     }
 });
 
