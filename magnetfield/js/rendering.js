@@ -487,7 +487,6 @@ async function render() {
         }
         let all_lines = [];
         let ready_starts = [];
-        if(p<1){alert(3);p++;}
         for (i = 0; i < starts.length; i++){
             if(lines.get(starts[i][2])[0] == starts[i][3]){
               Px = starts[i][0];
