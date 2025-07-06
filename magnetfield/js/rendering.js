@@ -1,4 +1,4 @@
-/*function calculatePotential(x, y) {
+function calculatePotential(x, y) {
     let potential = 0;
     for (let i = 0; i < charges.length; i++) {
         const charge = charges[i];
@@ -10,9 +10,9 @@
         }
     }
     return potential;
-}*/
+}
 
-/*function calculateField(x, y) {
+function calculateField(x, y) {
     let Ex = 0;
     let Ey = 0;
     for (let i = 0; i < charges.length; i++) {
@@ -29,9 +29,9 @@
         }
     }
     return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
-}*/
+}
 
-function calculatePotential(x, y) {
+function calculateMagPotential(x, y) {
     let A = 0;
     for (let i = 0; i < charges.length; i++) {
         const wire = charges[i];
@@ -45,7 +45,7 @@ function calculatePotential(x, y) {
     return A;
 }
 
-/*function calculateMagField(x, y) {
+function calculateMagField(x, y) {
     let Bx = 0;
     let By = 0;
     for (let i = 0; i < charges.length; i++) {
@@ -62,24 +62,6 @@ function calculatePotential(x, y) {
     }
 
     return {x: Bx, y: By, r: Math.sqrt(Bx * Bx + By * By)};
-}*/
-function calculateField(x, y) {
-    let Ex = 0;
-    let Ey = 0;
-    for (let i = 0; i < charges.length; i++) {
-        const charge = charges[i];
-        const dx = x - charge.x;
-        const dy = y - charge.y;
-        const r2 = dx * dx + dy * dy;
-        const r = Math.sqrt(r2);
-
-        if (r >= 0.01) {
-            const E = (kM * charge.q*10e13) / (2*Math.PI*r2);
-            Ey += -dx * E;
-            Ex += dy * E;
-        }
-    }
-    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey), posx: x, posy: y};
 }
 
 let isRendering = false;
@@ -291,7 +273,7 @@ async function render() {
         const potsWidth = canvasWidth + 10;
         const potsHeight = canvasHeight + 10;
         // assign horizontal slices of the screen to workers
-     /*   for (let i = 0; i < numWorkers; i++) {
+        for (let i = 0; i < numWorkers; i++) {
             const startY = Math.floor(i * potsHeight / numWorkers);
             const endY = Math.floor((i + 1) * potsHeight / numWorkers);
             // pass data
@@ -305,7 +287,7 @@ async function render() {
                 charges,
                 k, kM
             });
-        }*/
+        }
         // wait for everyone to cook
         let maxAbsPot = -1;
         await Promise.all(workers.map(worker => new Promise(resolve => {
@@ -333,7 +315,7 @@ async function render() {
                 drawBg: SETTINGS.drawBg,
                 colorBgPos: SETTINGS.colorBgPos,
                 colorBgNeg: SETTINGS.colorBgNeg,
-                drawEquipotential: false,
+                drawEquipotential: SETTINGS.drawEquipotential,
                 colorsEquipotential: SETTINGS.colorsEquipotential,
                 equipLineOpacity: SETTINGS.equipLineOpacity,
                 canvasWidth,
