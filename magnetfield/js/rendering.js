@@ -418,7 +418,6 @@ async function render() {
         let starts = [];
         let indexes = new Map();
         ctx.beginPath();
-        if(p<1){alert(4);p++;}
         let lines = new Map();
         for(let i = 0; i < charges.length; i++){
             indexes.set(i,new Map()); //to find the beginning of the line
@@ -583,7 +582,7 @@ async function render() {
       }
       ctx.stroke();
       if(p<1){alert(2);p++;}
-    }}catch(e){if(p<1){alert(e);p++;}}
+    }}catch(e){if(p<2){alert(e);p++;}}
     
     animateWithoutRequest();
 
