@@ -206,7 +206,7 @@ let workerCode = `
                 }
             }
             postMessage(' *microwave bell sound* ');
-        } else /* if (TYPE == "potentialM") {
+        } else if (TYPE == "potentialM") {
             // potential calculation
 
             // pass all parameters and interpret the shared buffer as a float array
@@ -246,7 +246,7 @@ let workerCode = `
             }
 
             postMessage(maxAbsPot);
-        }*/
+        }
     };
 `;
 const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
@@ -401,66 +401,176 @@ async function render() {
         }
     }
 
-    if (SETTINGS.drawField && !SETTINGS.MAGNETIC) {
+    let deletenow = "";
+    if (SETTINGS.drawField){
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
+        density = 1250*4/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
-        let maxIter = 10000;
-        let incomingLines = [];
-        // for each charge
-        for (let i = 0; i < charges.length; i++) {
-            // track already present lines which end in the charge
-            let linesNow = (incomingLines[i] || []).length;
-            // make enough extra lines so that the total amount would be equal to 2**fieldDensity
-            for (let j = 0; j < 2**SETTINGS.fieldDensity - linesNow; j++) {
-                // find the biggest gap in the lines to put a new line in
-                let newLineAngle = 0;
-                if (!incomingLines[i]) {
-                    incomingLines[i] = [];
-                    newLineAngle = 0;
-                } else {
-                    incomingLines[i].sort((a, b) => a - b);
-
-                    let maxGap = 0;
-                    incomingLines[i].forEach((angle, I) => {
-                        let next = incomingLines[i][(I + 1) % incomingLines[i].length] + (I + 1 == incomingLines[i].length ? 2 * Math.PI : 0);
-                        let gap = next - angle;
-                        if (gap > maxGap) [maxGap, newLineAngle] = [gap, (angle + next) / 2 % (2 * Math.PI)];
-                    });
-                }
-                incomingLines[i].push(newLineAngle);
-
-                // spawn a probe pseudo-charge
-                let Px = charges[i].x + 5*Math.cos(newLineAngle);
-                let Py = charges[i].y + 5*Math.sin(newLineAngle);
-                ctx.beginPath();
-                ctx.moveTo(Px, Py);
-                // move in the other direction if coming out of a negative charge
-                let negateField = (charges[i].q < 0 ? -1 : 1) / SETTINGS.fieldQuality;
-                outer: for (let I = 0; I < maxIter; I++) {
-                    // step by 1 pixel of length each time in the direction of E (or opposite)
-                    let E = calculateField(Px, Py);
-                    Px += E.x / E.r * negateField;
-                    Py += E.y / E.r * negateField;
-                    ctx.lineTo(Px, Py);
-
-                    // stop if the line gets reeeeeally out of bounds
-                    if (Px < -2000 || Py < -2000 || Px > canvasWidth + 2000 || Py > canvasHeight + 2000) break outer;
-                    
-                    // check if the line approached a charge and add it to the respective charge's tracked lines
-                    for (let k = 0; k < charges.length; k++) {
-                        if (i == k) continue;
-                        if ((Px - charges[k].x)**2 + (Py - charges[k].y)**2 <= 30) {
-                            if (!incomingLines[k]) {
-                                incomingLines[k] = [];
+        let starts = [];
+        let indexes = new Map();
+        ctx.beginPath();
+        let lines = new Map();
+        for(let i = 0; i < charges.length; i++){
+            indexes.set(i,new Map()); //to find the beginning of the line
+            let Px = charges[i].x;
+            let Py = charges[i].y;
+            let angle = [0,0];
+            let zaehler = 0;
+            //draw 8 lines in all dirctions
+            for(let a = 0; a < 8; a++){
+                indexes.get(i).set(a,starts.length);
+                zaehler = 0;
+                let posX = Px + 0.0125*Math.cos(a*Math.PI/4);
+                let posY = Py + 0.0125*Math.sin(a*Math.PI/4);
+                let posYs = posY;
+                let posXs = posX;
+                let zzz = 0;
+                let bFeld = 0;
+                let outof2 = false;
+                while(posX > 0 && posY > 0 && posX < canvasWidth && posY < canvasHeight && zzz < 100000 && !outof2){
+                  zzz++;
+                  ho = calculateField(posX,posY);
+                  if (!ho){break;}
+                  posX += 0.00625*Math.cos(a*Math.PI/4);
+                  posY += 0.00625*Math.sin(a*Math.PI/4);
+                  for (let o = 0; o < charges.length; o++){
+                      if(i != o && (posX-charges[o].x)**2+(posY-charges[o].y)**2 < (posX-charges[i].x)**2+(posY-charges[i].y)**2){
+                          outof2 = true;
+                      }
+                  }
+                  bFeld += ho.r;
+                  if(bFeld >= density){
+                      bFeld -= density;
+                        //if it's out
+                        if((posX-posXs)**2+(posY-posYs)**2 > 100){
+                            starts.push([posX,posY,i,a, zaehler, ho.r]);
+                            if(i == 0 && a == 7 && zaehler != 0){
+                                deletenow += ho.r + "_" + ((posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2) + ";"
                             }
-                            incomingLines[k].push(Math.atan2(Py - charges[k].y, Px - charges[k].x));
-                            break outer; // stop (yay loop labels)
                         }
-                    }
+                        zaehler ++;
+                      }
                 }
-                ctx.stroke();
+                if(zaehler > angle[1]){
+                    angle[1] = zaehler;
+                    angle[0] = a;
+                }
             }
+            lines.set(i,angle); //the langthest line
         }
+     //   if (p<1){p++; alert(calculateField(charges[0].x+1, charges[0].y).r + " a" + calculateField(charges[0].x-1,charges[0].y).r);}
+        lines.set(-2,[-2,999]);
+        let konstant = SETTINGS.equipLineThickness;
+        if(SETTINGS.drawEquipotentialtech){
+             konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
+        }
+        for (ww = 0; ww < starts.length; ww++){
+              starts[ww].push(konstant/(2*starts[ww][5]));
+              ctx.beginPath();
+              ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
+              if(starts[ww][4] >23){
+                ctx.fillStyle = "blue";
+              }
+              else{
+                ctx.fillStyle = "red";
+              }
+              ctx.fill();
+        }
+        let all_lines = [];
+        let ready_starts = [];
+        for (i = 0; i < starts.length; i++){
+            if(lines.get(starts[i][2])[0] == starts[i][3]){
+              Px = starts[i][0];
+              Py = starts[i][1];
+              let posXs = Px;
+              let posYs = Py;
+              let again = false;
+              let outof = false;
+              let need = true;
+              let z = 0;
+              let these_lines = [];
+              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 100000 && !again){
+      //            these_lines.push([posXs,Py]);
+                  let ho = calculateField(Px,Py);
+                  if (!ho){break;}
+                  Px += 0.1*Math.cos(Math.atan2(ho.y,ho.x));
+                  Py += 0.1*Math.sin(Math.atan2(ho.y,ho.x));
+                  if(z%5==0){
+                      for(let ii = 0; ii <ready_starts.length; ii++){
+                          if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
+                              if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][6]**2){
+                                  need = false;
+                                  break outer;
+                              }
+                          }
+                      }
+                      these_lines.push([Px,Py]);
+                  }
+                  if (!outof && (Px-posXs)**2+(Py-posYs)**2 > 3){
+                      outof = true;
+                  }
+                  if(outof && (Px-posXs)**2+(Py-posYs)**2 < 3){
+                      again = true;
+                  }
+                  z++;
+              }
+              Px = starts[i][0];
+              Py = starts[i][1];
+              outof = false;
+              z = 0;
+              these_lines.push([-8,-8]); //another direction
+              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z <100000 &&!again){
+                  let ho = calculateField(Px,Py);
+                  if (!ho){break;}
+                  Px += -0.1*Math.cos(Math.atan2(ho.y,ho.x));
+                  Py += -0.1*Math.sin(Math.atan2(ho.y,ho.x));
+                  if(z%5==0){
+                        for(ii = 0; ii <ready_starts.length; ii++){
+                            if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
+                                if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][6]**2){
+                                    need = false;
+                                    break outer;
+                                }
+                            }
+                        }
+                        these_lines.push([Px,Py]);
+                  }
+                  if (!outof && (Px-posXs)**2+(Py-posYs)**2 > 3){
+                        outof = true;
+                  }
+                  if(outof && (Px-posXs)**2+(Py-posYs)**2 < 3){
+                       again = true;
+                  }
+                  z++;
+              }
+              if(need){
+                ready_starts.push(starts[i]);
+                all_lines.push(these_lines); //points of every line
+              }
+          }
+      }
+  //          }
+      ctx.beginPath();
+      let used = new Map()
+      for(i = -1000; i < canvasWidth+1000; i++){
+          used.set(i,new Map());
+          for(j = -1000; j < canvasHeight+1000; j++){
+              used.get(i).set(j,false);
+          }
+      }
+      for(i=0;i<all_lines.length;i++){
+          //draw this line
+          ctx.moveTo(all_lines[i][0][0],all_lines[i][0][1]);
+          for(j=1; j<all_lines[i].length; j++){
+              if(all_lines[i][j][0] == -8){
+                  ctx.moveTo(all_lines[i][0][0],all_lines[i][0][1]);
+              }else{
+                  used.get(Math.round(all_lines[i][j][0])).set(Math.round(all_lines[i][j][1]), true); 
+                  ctx.lineTo(all_lines[i][j][0],all_lines[i][j][1]);
+              }
+          }
+      }
+      ctx.stroke();
     }
     
     animateWithoutRequest();
