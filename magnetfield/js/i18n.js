@@ -1,11 +1,11 @@
 var I18N = {
     'en': {
         'h1': "Magnetic Field Simulation",
-        'author': "by dacoconutchemist",
+        'author': "by MK and support by dacoconutchemist",
         'toolchoice': 'Tool: ',
-        'chargelabel': "Charge of the placed particle:",
+        'chargelabel': "Current of the placed wire:",
         'howto-summary': "How to use",
-        'howto-1': "&#x2022; To place particles, use left click for positive charge sign (short tap on touchscreen) or right click (long tap on touchscreen) for negative charge sign. The absolute value of the charge is controlled by the slider above.",
+        'howto-1': "&#x2022; To place wire, use left click for a current to us (short tap on touchscreen) or right click (long tap on touchscreen) for a current from us. The absolute value of the current is controlled by the slider above.",
         'howto-2': "&#x2022; To move particles, drag them around by their colored part.",
         'howto-3': "&#x2022; To remove particles, right click on their colored part (long tap on touchscreen).",
         'equipot-summary': "Equipotential lines",
