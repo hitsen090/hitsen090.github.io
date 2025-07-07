@@ -1,4 +1,4 @@
-function calculatePotential(x, y) {
+/*function calculatePotential(x, y) {
     let potential = 0;
     for (let i = 0; i < charges.length; i++) {
         const charge = charges[i];
@@ -10,7 +10,7 @@ function calculatePotential(x, y) {
         }
     }
     return potential;
-}
+}*/
 
 $('.m-hidden').hide();
 switchLanguage(LANG, true);
@@ -469,21 +469,18 @@ async function render() {
         }
      //   if (p<1){p++; alert(calculateField(charges[0].x+1, charges[0].y).r + " a" + calculateField(charges[0].x-1,charges[0].y).r);}
         lines.set(-2,[-2,999]);
-        let konstant = SETTINGS.equipLineThickness;
-        if(SETTINGS.drawEquipotentialtech){
-             konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
-        }
+        let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(2*starts[ww][5]));
-              ctx.beginPath();
-              ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
-              if(starts[ww][4] >23){
-                ctx.fillStyle = "blue";
-              }
-              else{
-                ctx.fillStyle = "red";
-              }
-              ctx.fill();
+              //ctx.beginPath();
+         //     ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
+              //if(starts[ww][4] >23){
+                //ctx.fillStyle = "blue";
+            //  }
+              //else{
+                //ctx.fillStyle = "red";
+              //}
+              //ctx.fill();
         }
         let all_lines = [];
         let ready_starts = [];
