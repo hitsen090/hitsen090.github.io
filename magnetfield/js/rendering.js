@@ -556,7 +556,7 @@ async function render() {
           }
       }
   //          }
-      if(p<1){alert(3);p++;}
+      //if(p<1){alert(3);p++;}
       ctx.beginPath();
       let used = new Map()
       for(i = -1000; i < canvasWidth+1000; i++){
@@ -578,7 +578,7 @@ async function render() {
           }
       }
       ctx.stroke();
-      if(p<1){alert(2);p++;}
+   //   if(p<1){alert(2);p++;}
     }}catch(e){if(p<2){alert(e);p++;}}
     
     animateWithoutRequest();
