@@ -20,7 +20,7 @@ let listeners = [
     {sel: "#voltage_mode", type: "checkbox", var: "voltageInftyMode", def: false, defVar: false},
     {sel: "#angle_mode", type: "checkbox", var: "angleDistanceMode", def: false, defVar: false},
     {sel: "#powerlinetool_arrows", type: "checkbox", var: "powerlineToolArrows", def: true, defVar: true},
-    {sel: "#check_equipot", type: "checkbox", var: "drawEquipotential", def: true, defVar: true},
+    {sel: "#check_equipot", type: "checkbox", var: "drawEquipotential", def: false, defVar: false},
     {sel: "#slider_equipot", type: "slider", var: "equipLineDensityCoef", def: "0.25", defVar: 4, preprocess: v => 1/parseFloat(v)},
     {sel: "#slider_equipot_d", type: "slider", var: "equipLineOpacity", def: "1", defVar: 1, preprocess: v => parseFloat(v)},
     {sel: "#slider_equipot_t", type: "slider", var: "equipLineThickness", def: "1", defVar: 1, preprocess: v => parseInt(v)},
