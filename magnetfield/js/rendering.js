@@ -24,14 +24,14 @@ function calculateField(x, y) {
         const dy = y - charge.y;
         const r2 = dx * dx + dy * dy;
         const r = Math.sqrt(r2);
-        
-        if (r > 0.01) {
-            const E = k * charge.q / r / r2;
-            Ex += dx * E;
-            Ey += dy * E;
+
+        if (r >= 0.01) {
+            const E = (kM * charge.q*10e13) / (2*Math.PI*r2);
+            Ey += -dx * E;
+            Ex += dy * E;
         }
     }
-    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey)};
+    return {x: Ex, y: Ey, r: Math.sqrt(Ex * Ex + Ey * Ey), posx: x, posy: y};
 }
 
 function calculateMagPotential(x, y) {
