@@ -12,8 +12,7 @@
     return potential;
 }*/
 
-$('.m-hidden').hide();
-switchLanguage(LANG, true);
+
 
 function calculateField(x, y) {
     let Ex = 0;
