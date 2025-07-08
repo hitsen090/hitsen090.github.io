@@ -111,7 +111,7 @@ var I18N = {
     },
     'de': {
         'h1': "Simulation des Magnetischen Feldes",
-        'author': "von dacoconutchemist",
+        'author': "von MK unter der Unterstützung von dacoconutchemist",
         'toolchoice': 'Instrument: ',
         'chargelabel': "Strom des platzierten Leiters:",
         'howto-summary': "Anleitung",
