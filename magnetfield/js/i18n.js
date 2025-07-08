@@ -132,7 +132,7 @@ var I18N = {
         'slider_powerline_d': "Deckkraft",
         'slider_powerline_t': "Dicke",
         'slider_powerline_q': "Qualität",
-        'chargeunit': " μC",
+        'chargeunit': " A",
         'voltageunit': " V",
         'rendered': 'Bild gerendert (%time% ms)',
         'rendering': 'Rendering...',
