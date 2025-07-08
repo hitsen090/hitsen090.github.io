@@ -262,6 +262,7 @@ let uuu = 0;
 let ppp = [];
 let fpsTimeout;
 async function render() {
+    SETTINGS.magnetic = false;
     //performance.mark('renderStart');
     if (isRendering) return;
     isRendering = true;
