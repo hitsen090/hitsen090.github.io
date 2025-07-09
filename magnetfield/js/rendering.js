@@ -416,6 +416,7 @@ async function render() {
         density = 1250*4/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
         let starts = [];
+        let koef = [];
         let indexes = new Map();
         ctx.beginPath();
         let lines = new Map();
@@ -429,6 +430,7 @@ async function render() {
             for(let a = 0; a < 8; a++){
                 indexes.get(i).set(a,starts.length);
                 zaehler = 0;
+                let zaehler2 = 0; 
                 let posX = Px + 0.0125*Math.cos(a*Math.PI/4);
                 let posY = Py + 0.0125*Math.sin(a*Math.PI/4);
                 let posYs = posY;
@@ -453,9 +455,13 @@ async function render() {
                         //if it's out
                         if((posX-posXs)**2+(posY-posYs)**2 > 100){
                             starts.push([posX,posY,i,a, zaehler, ho.r]);
+                            if(zaehler2 == 1){
+                                koef.push(ho.r*(posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2);
+                            }
                             if(i == 0 && a == 7 && zaehler != 0){
                                 deletenow += ho.r + "_" + ((posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2) + ";"
                             }
+                            zaehler2 ++;
                         }
                         zaehler ++;
                       }
@@ -469,7 +475,12 @@ async function render() {
         }
      //   if (p<1){p++; alert(calculateField(charges[0].x+1, charges[0].y).r + " a" + calculateField(charges[0].x-1,charges[0].y).r);}
         lines.set(-2,[-2,999]);
-        let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
+        //let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
+        let sum = 0;
+        for(let i = 0; i < koef.length; i++){
+            sum += koef[i];
+        }
+        let konstant = sum/(i+1);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(2*starts[ww][5]));
               //ctx.beginPath();
