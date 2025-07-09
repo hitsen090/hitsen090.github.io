@@ -482,7 +482,7 @@ async function render() {
             sum += koef[i];
             zaehler ++;
         }
-        let konstant = sum/(zahler+1);
+        let konstant = sum/(zaehler+1);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(2*starts[ww][5]));
               //ctx.beginPath();
