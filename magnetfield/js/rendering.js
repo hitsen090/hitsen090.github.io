@@ -477,10 +477,12 @@ async function render() {
         lines.set(-2,[-2,999]);
         //let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
         let sum = 0;
+        zaehler = 0;
         for(let i = 0; i < koef.length; i++){
             sum += koef[i];
+            zaehler ++;
         }
-        let konstant = sum/(i+1);
+        let konstant = sum/(zahler+1);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(2*starts[ww][5]));
               //ctx.beginPath();
