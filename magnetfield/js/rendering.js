@@ -166,9 +166,11 @@ let workerCode = `
                         // for coloring, clamp the potential and do a log scale for color up to 5000 volts in both directions
 
                         const clampedPotential = Math.max(-5000, Math.min(5000, potential));
-                         if(clampedPotential != 0){
-                          col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
-                         }
+                        if (clampedPotential > 0) {
+                            col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
+                        } else {
+                            col = lerpColors(col, colorBgNeg, Math.log(-potential + 1) / logMaxPot);
+                        }
                     }
 
                     if (drawEquipotential) {
