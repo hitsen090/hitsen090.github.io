@@ -150,7 +150,7 @@ let workerCode = `
             const equipotOffset1 = Math.floor(equipLineThickness/2);
             const equipotOffset2 = Math.ceil(equipLineThickness/2);
 
-            const logMaxPot = Math.log(maxAbsPot + 1);
+            const logMaxPot = Math.log(maxAbsPot*0.5 + 1);
 
             colorBgDefault = byteify(colorBgDefault);
             colorBgPos = byteify(colorBgPos);
