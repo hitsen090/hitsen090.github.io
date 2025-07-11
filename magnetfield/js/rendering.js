@@ -473,7 +473,7 @@ async function render() {
             }
             lines.set(i,angle); //the langthest line
         }
-        if (p<1){p++; alert(calculateField(charges[0].x+1, charges[0].y).r + " a" + calculateField(charges[0].x-1,charges[0].y).r);}
+        if (p<1){p++; alert(density);}
         lines.set(-2,[-2,999]);
         //let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
         let sum = 0;
