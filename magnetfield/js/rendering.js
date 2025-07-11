@@ -438,7 +438,7 @@ async function render() {
                 let zzz = 0;
                 let bFeld = 0;
                 let outof2 = false;
-                while(posX > 0 && posY > 0 && posX < canvasWidth && posY < canvasHeight && zzz < 100000 && !outof2){
+                while(posX > 0 && posY > 0 && posX < canvasWidth && posY < canvasHeight && zzz < 1000000 && !outof2){
                   zzz++;
                   ho = calculateField(posX,posY);
                   if (!ho){break;}
@@ -508,7 +508,7 @@ async function render() {
               let need = true;
               let z = 0;
               let these_lines = [];
-              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 100000 && !again){
+              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z < 1000000 && !again){
       //            these_lines.push([posXs,Py]);
                   let ho = calculateField(Px,Py);
                   if (!ho){break;}
@@ -538,7 +538,7 @@ async function render() {
               outof = false;
               z = 0;
               these_lines.push([-8,-8]); //another direction
-              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z <100000 &&!again){
+              outer: while (Px > 0 && Py > 0 && Py < canvasHeight && Px < canvasWidth && z <1000000 &&!again){
                   let ho = calculateField(Px,Py);
                   if (!ho){break;}
                   Px += -0.1*Math.cos(Math.atan2(ho.y,ho.x));
