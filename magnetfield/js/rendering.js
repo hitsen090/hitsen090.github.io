@@ -168,9 +168,17 @@ let workerCode = `
 
                         const clampedPotential = Math.max(-5000, Math.min(5000, potential));
                         if (clampedPotential > 0) {
-                            col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
+                          //  col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
+                          const maxPot = 5000;
+const normPot = Math.min(maxPot, Math.abs(potential)) / maxPot;
+const intensity = Math.pow(normPot, 0.5);  // sqrt — усиливает малые значения
+col = lerpColors(col, colorBgPos, intensity);
                         } else {
-                            col = lerpColors(col, colorBgPos, Math.log(-potential + 1) / logMaxPot);
+                            //col = lerpColors(col, colorBgPos, Math.log(-potential + 1) / logMaxPot);
+                            const maxPot = 5000;
+const normPot = Math.min(maxPot, Math.abs(potential)) / maxPot;
+const intensity = Math.pow(normPot, 0.5);  // sqrt — усиливает малые значения
+col = lerpColors(col, colorBgPos, intensity);
                         }
                     }
 
