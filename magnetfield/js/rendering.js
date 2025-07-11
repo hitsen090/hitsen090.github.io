@@ -431,8 +431,8 @@ async function render() {
                 indexes.get(i).set(a,starts.length);
                 zaehler = 0;
                 let zaehler2 = 0; 
-                let posX = Px + 0.02*Math.cos(a*Math.PI/4);
-                let posY = Py + 0.02*Math.sin(a*Math.PI/4);
+                let posX = Px + 0.002*Math.cos(a*Math.PI/4);
+                let posY = Py + 0.002*Math.sin(a*Math.PI/4);
                 let posYs = posY;
                 let posXs = posX;
                 let zzz = 0;
