@@ -170,7 +170,7 @@ let workerCode = `
                         if (clampedPotential > 0) {
                             col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
                         } else {
-                            col = lerpColors(col, colorBgNeg, Math.log(-potential + 1) / logMaxPot);
+                            col = lerpColors(col, colorBgPos, Math.log(-potential + 1) / logMaxPot);
                         }
                     }
 
