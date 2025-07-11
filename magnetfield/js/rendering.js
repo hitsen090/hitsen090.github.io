@@ -442,8 +442,8 @@ async function render() {
                   zzz++;
                   ho = calculateField(posX,posY);
                   if (!ho){break;}
-                  posX += 0.00625*Math.cos(a*Math.PI/4);
-                  posY += 0.00625*Math.sin(a*Math.PI/4);
+                  posX += 0.000625*Math.cos(a*Math.PI/4);
+                  posY += 0.000625*Math.sin(a*Math.PI/4);
                   for (let o = 0; o < charges.length; o++){
                       if(i != o && (posX-charges[o].x)**2+(posY-charges[o].y)**2 < (posX-charges[i].x)**2+(posY-charges[i].y)**2){
                           outof2 = true;
@@ -473,7 +473,7 @@ async function render() {
             }
             lines.set(i,angle); //the langthest line
         }
-        if (p<1){p++; alert(density);}
+    //    if (p<1){p++; alert(density);}
         lines.set(-2,[-2,999]);
         //let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
         let sum = 0;
@@ -485,7 +485,7 @@ async function render() {
         let konstant = sum*1.2/(zaehler+1);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(1.5*starts[ww][5]));
-              ctx.beginPath();
+              /*ctx.beginPath();
              ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
               if(starts[ww][4] >23){
                 ctx.fillStyle = "blue";
@@ -493,7 +493,7 @@ async function render() {
               else{
                 ctx.fillStyle = "red";
               }
-              ctx.fill();
+              ctx.fill();*/
         }
         let all_lines = [];
         let ready_starts = [];
