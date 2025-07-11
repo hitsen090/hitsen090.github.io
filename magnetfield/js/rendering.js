@@ -1,5 +1,5 @@
-/*function calculatePotential(x, y) {
-    let potential = 0;
+function calculatePotential(x, y) {
+    /*let potential = 0;
     for (let i = 0; i < charges.length; i++) {
         const charge = charges[i];
         const dx = x - charge.x;
@@ -9,8 +9,9 @@
             potential += k * charge.q / r;
         }
     }
-    return potential;
-}*/
+    return potential;*/
+    return calculateField(x,y);
+}
 
 
 
@@ -165,11 +166,9 @@ let workerCode = `
                         // for coloring, clamp the potential and do a log scale for color up to 5000 volts in both directions
 
                         const clampedPotential = Math.max(-5000, Math.min(5000, potential));
-                        if (clampedPotential > 0) {
-                            col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
-                        } else {
-                            col = lerpColors(col, colorBgNeg, Math.log(-potential + 1) / logMaxPot);
-                        }
+                         if(clampedPotential != 0){
+                          col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
+                         }
                     }
 
                     if (drawEquipotential) {
