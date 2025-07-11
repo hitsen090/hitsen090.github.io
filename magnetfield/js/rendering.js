@@ -285,7 +285,7 @@ async function render() {
             const endY = Math.floor((i + 1) * potsHeight / numWorkers);
             // pass data
             workers[i].postMessage({
-                TYPE: SETTINGS.MAGNETIC ? "potential" : "potentialM",
+                TYPE: SETTINGS.MAGNETIC ? "potentialM" : "potential",
                 sharedPotentialBuffer,
                 potsWidth,
                 potsHeight,
