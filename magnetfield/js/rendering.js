@@ -456,7 +456,7 @@ async function render() {
                         if((posX-posXs)**2+(posY-posYs)**2 > 100){
                             starts.push([posX,posY,i,a, zaehler, ho.r]);
                             if(zaehler2 == 1){
-                                koef.push(ho.r*(posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2);
+                                koef.push(ho.r*Math.sqrt((posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2));
                             }
                             if(i == 0 && a == 7 && zaehler != 0){
                                 deletenow += ho.r + "_" + ((posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2) + ";"
