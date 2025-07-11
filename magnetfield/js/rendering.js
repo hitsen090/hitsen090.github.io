@@ -35,7 +35,7 @@ function calculateField(x, y) {
 }
 
 function calculateMagPotential(x, y) {
-    let A = 0;
+    /*let A = 0;
     for (let i = 0; i < charges.length; i++) {
         const wire = charges[i];
         const dx = x - wire.x;
@@ -45,7 +45,8 @@ function calculateMagPotential(x, y) {
             A += kM * wire.q * Math.log(r2) / 2;
         }
     }
-    return A;
+    return A;*/
+    return calculateField(x,y).r;
 }
 
 function calculateMagField(x, y) {
