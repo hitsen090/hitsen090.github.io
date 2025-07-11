@@ -171,13 +171,13 @@ let workerCode = `
                           //  col = lerpColors(col, colorBgPos, Math.log(potential + 1) / logMaxPot);
                           const maxPot = 5000;
 const normPot = Math.min(maxPot, Math.abs(potential)) / maxPot;
-const intensity = Math.pow(normPot, 0.3);  // sqrt — усиливает малые значения
+const intensity = Math.tanh(normPot * 3); // нормализуем и "успокаиваем"  // sqrt — усиливает малые значения
 col = lerpColors(col, colorBgPos, intensity);
                         } else {
                             //col = lerpColors(col, colorBgPos, Math.log(-potential + 1) / logMaxPot);
                             const maxPot = 5000;
 const normPot = Math.min(maxPot, Math.abs(potential)) / maxPot;
-const intensity = Math.pow(normPot, 0.3);  // sqrt — усиливает малые значения
+const intensity = Math.tanh(normPot * 3); // нормализуем и "успокаиваем"  // sqrt — усиливает малые значения
 col = lerpColors(col, colorBgPos, intensity);
                         }
                     }
