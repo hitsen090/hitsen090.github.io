@@ -1,5 +1,5 @@
 function calculatePotential(x, y) {
-    /*let potential = 0;
+    let potential = 0;
     for (let i = 0; i < charges.length; i++) {
         const charge = charges[i];
         const dx = x - charge.x;
@@ -9,8 +9,8 @@ function calculatePotential(x, y) {
             potential += k * charge.q / r;
         }
     }
-    return potential;*/
-    return calculateField(x,y);
+    return potential;
+  //  return calculateField(x,y);
 }
 
 
