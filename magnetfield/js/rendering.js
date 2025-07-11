@@ -585,7 +585,7 @@ async function render() {
               if(all_lines[i][j][0] == -8){
                   ctx.moveTo(all_lines[i][0][0],all_lines[i][0][1]);
               }else{
-                  used.get(Math.round(all_lines[i][j][0])).set(Math.round(all_lines[i][j][1]), true); 
+                  //used.get(Math.round(all_lines[i][j][0])).set(Math.round(all_lines[i][j][1]), true); 
                   ctx.lineTo(all_lines[i][j][0],all_lines[i][j][1]);
               }
           }
