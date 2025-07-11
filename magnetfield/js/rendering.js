@@ -485,15 +485,15 @@ async function render() {
         let konstant = sum*1.2/(zaehler+1);
         for (ww = 0; ww < starts.length; ww++){
               starts[ww].push(konstant/(1.5*starts[ww][5]));
-              //ctx.beginPath();
-         //     ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
-              //if(starts[ww][4] >23){
-                //ctx.fillStyle = "blue";
-            //  }
-              //else{
-                //ctx.fillStyle = "red";
-              //}
-              //ctx.fill();
+              ctx.beginPath();
+             ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
+              if(starts[ww][4] >23){
+                ctx.fillStyle = "blue";
+              }
+              else{
+                ctx.fillStyle = "red";
+              }
+              ctx.fill();
         }
         let all_lines = [];
         let ready_starts = [];
