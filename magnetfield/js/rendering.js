@@ -413,7 +413,7 @@ async function render() {
     try{
     if (SETTINGS.drawField){
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
-        density = 1250*4/SETTINGS.fieldDensity*3;
+        density = 1250*40/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
         let starts = [];
         let koef = [];
@@ -431,8 +431,8 @@ async function render() {
                 indexes.get(i).set(a,starts.length);
                 zaehler = 0;
                 let zaehler2 = 0; 
-                let posX = Px + 0.0125*Math.cos(a*Math.PI/4);
-                let posY = Py + 0.0125*Math.sin(a*Math.PI/4);
+                let posX = Px + 0.02*Math.cos(a*Math.PI/4);
+                let posY = Py + 0.02*Math.sin(a*Math.PI/4);
                 let posYs = posY;
                 let posXs = posX;
                 let zzz = 0;
@@ -482,9 +482,9 @@ async function render() {
             sum += koef[i];
             zaehler ++;
         }
-        let konstant = sum/(zaehler+1);
+        let konstant = sum*1.2/(zaehler+1);
         for (ww = 0; ww < starts.length; ww++){
-              starts[ww].push(konstant/(2*starts[ww][5]));
+              starts[ww].push(konstant/(1.5*starts[ww][5]));
               //ctx.beginPath();
          //     ctx.arc(starts[ww][0],starts[ww][1],2,0,Math.PI*2);
               //if(starts[ww][4] >23){
