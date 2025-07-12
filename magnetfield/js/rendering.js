@@ -464,7 +464,11 @@ async function render() {
                       bFeld -= density;
                         //if it's out
                         if((posX-posXs)**2+(posY-posYs)**2 > 100){
-                            starts.push([posX,posY,i,a, zaehler, ho.r]);
+                            if(charges[i].charge>0){
+                              starts.push([posX,posY,i,a, zaehler, ho.r, true]);
+                            else{
+                              starts.push([posX,posY,i,a, zaehler, ho.r, false]);
+                            }
                             if(zaehler2 == 1){
                                 koef.push(ho.r*Math.sqrt((posX-starts[starts.length-2][0])**2+(posY-starts[starts.length-2][1])**2));
                             }
@@ -527,7 +531,7 @@ async function render() {
                   if(z%5==0){
                       for(let ii = 0; ii <ready_starts.length; ii++){
                           if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
-                              if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][6]**2){
+                              if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 && ready_starts[ii][6] != starts[i][6]){
                                   need = false;
                                   break outer;
                               }
@@ -556,7 +560,7 @@ async function render() {
                   if(z%5==0){
                         for(ii = 0; ii <ready_starts.length; ii++){
                             if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
-                                if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][6]**2){
+                                if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 && ready_starts[ii][6] != starts[i][6]){
                                     need = false;
                                     break outer;
                                 }
