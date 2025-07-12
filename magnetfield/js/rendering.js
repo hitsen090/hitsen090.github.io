@@ -423,7 +423,7 @@ async function render() {
     try{
     if (SETTINGS.drawField){
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
-        density = 1250*20/SETTINGS.fieldDensity*3;
+        density = 1250*15/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
         let starts = [];
         let koef = [];
