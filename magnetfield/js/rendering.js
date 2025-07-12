@@ -133,6 +133,7 @@ let workerCode = `
                 equipLineDensityCoef,
                 colorBgDefault,
                 drawBg,
+                tech,
                 colorBgPos,
                 colorBgNeg,
                 drawEquipotential,
@@ -141,8 +142,7 @@ let workerCode = `
                 canvasWidth,
                 canvasHeight,
                 startY,
-                endY,
-                tech
+                endY
             } = e.data;
             let DATA = new Uint8ClampedArray(sharedBgBuffer);
             const pots = new Float64Array(sharedPotentialBuffer);
@@ -330,6 +330,7 @@ async function render() {
                 equipLineDensityCoef: SETTINGS.equipLineDensityCoef,
                 colorBgDefault: SETTINGS.colorBgDefault,
                 drawBg: SETTINGS.drawBg,
+                tech: SETTINGS.tech,
                 colorBgPos: SETTINGS.colorBgPos,
                 colorBgNeg: SETTINGS.colorBgNeg,
                 drawEquipotential: SETTINGS.drawEquipotential,
@@ -338,8 +339,7 @@ async function render() {
                 canvasWidth,
                 canvasHeight,
                 startY,
-                endY,
-                tech: SETTINGS.tech
+                endY
             });
         }
         // wait for everyone to cook
