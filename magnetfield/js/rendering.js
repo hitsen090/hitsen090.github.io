@@ -230,20 +230,26 @@ let workerCode = `
 
             for (let y = startY; y < endY; y++) {
                 for (let x = 0; x < potsWidth; x++) {
-                    let A = 0;
                     let closeFlag = true;
+                    let Ex = 0;
+                    let Ey = 0;
                     for (let i = 0; i < charges.length; i++) {
-                        const wire = charges[i];
-                        const dx = x - (wire.x + 5);
-                        const dy = y - (wire.y + 5);
+                        const charge = charges[i];
+                        const dx = x - charge.x;
+                        const dy = y - charge.y;
                         const r2 = dx * dx + dy * dy;
-                        if (r2 > 1e-4) {
-                            A += - kM * wire.q * Math.log(r2) / 2;
+                        const r = Math.sqrt(r2);
+
+                        if (r >= 0.01) {
+                          const E = (kM * charge.q*10e13) / (2*Math.PI*r2);
+                          Ey += -dx * E;
+                          Ex += dy * E;
                         }
                         if (r2 < 25) {
                             closeFlag = false;
                         }
                     }
+                    A = Math.sqrt(Ex*Ex+Ey*Ey);
                     pots[y * potsWidth + x] = A - potentialOffset;
                     if (closeFlag) if (maxAbsPot < Math.abs(A)) maxAbsPot = Math.abs(A);
                 }
