@@ -163,7 +163,7 @@ let workerCode = `
                     const potential = pots[(y + 5) * potsWidth + x + 5];
                     let col = colorBgDefault;
                     
-                    /*if (drawBg) {
+                    if (drawBg) {
                         // for coloring, clamp the potential and do a log scale for color up to 5000 volts in both directions
 
                         const clampedPotential = Math.max(-5000, Math.min(5000, potential));
@@ -172,19 +172,7 @@ let workerCode = `
                         } else {
                             col = lerpColors(col, colorBgPos, Math.log(-potential + 1) / logMaxPot);
                         }
-                    }*/
-                    if (drawBg) {
-    const clampedPotential = Math.max(-5000, Math.min(5000, potential));
-    const steps = 10; // количество дискретных уровней
-    const level = Math.floor((clampedPotential + 5000) / (10000 / steps)); // 0 до steps-1
-    const opacity = level / steps;
-
-    if (clampedPotential > 0) {
-        col = lerpColors(col, colorBgPos, opacity);
-    } else {
-        col = lerpColors(col, colorBgPos, opacity);
-    }
-}
+                    }
 
                     if (drawEquipotential) {
                         // get potential in the corners of a pixel (or corners of a bigger range for increased line thickness)
