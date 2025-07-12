@@ -56,7 +56,7 @@ var I18N = {
     },
     'ua': {
         'h1': "Симуляція Магнітного Поля",
-        'author': "зроблено MK за підтримки dacoconatchemist",
+        'author': "зроблено MK за підтримки dacoconutchemist",
         'toolchoice': 'Інструмент: ',
         'chargelabel': "Струм поставленого провідника:",
         'howto-summary': "Як користуватись",
