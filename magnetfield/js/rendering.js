@@ -464,7 +464,7 @@ async function render() {
                       bFeld -= density;
                         //if it's out
                         if((posX-posXs)**2+(posY-posYs)**2 > 100){
-                            if(charges[i].charge>0){
+                            if(charges[i].q>0){
                               starts.push([posX,posY,i,a, zaehler, ho.r, true]);
                             else{
                               starts.push([posX,posY,i,a, zaehler, ho.r, false]);
