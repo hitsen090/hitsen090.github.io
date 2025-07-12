@@ -531,7 +531,7 @@ async function render() {
                   if(z%5==0){
                       for(let ii = 0; ii <ready_starts.length; ii++){
                           if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
-                              if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 && ready_starts[ii][6] == starts[i][6]){
+                              if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 /*&& ready_starts[ii][6] == starts[i][6]*/){
                                   need = false;
                                   break outer;
                               }
@@ -560,7 +560,7 @@ async function render() {
                   if(z%5==0){
                         for(ii = 0; ii <ready_starts.length; ii++){
                             if(ii != i && lines.get(ready_starts[ii][2])[0] == ready_starts[ii][3]){
-                                if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 && ready_starts[ii][6] == starts[i][6]){
+                                if((Px-ready_starts[ii][0])**2+(Py-ready_starts[ii][1])**2 < ready_starts[ii][7]**2 && /*ready_starts[ii][6] == starts[i][6]*/){
                                     need = false;
                                     break outer;
                                 }
