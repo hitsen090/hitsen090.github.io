@@ -423,7 +423,7 @@ async function render() {
     try{
     if (SETTINGS.drawField){
         ctx.strokeStyle = colorToRGBA(SETTINGS.colorsField, SETTINGS.fieldOpacity);
-        density = 1250*40/SETTINGS.fieldDensity*3;
+        density = 1250*20/SETTINGS.fieldDensity*3;
         ctx.lineWidth = SETTINGS.fieldThickness;
         let starts = [];
         let koef = [];
@@ -452,8 +452,8 @@ async function render() {
                   zzz++;
                   ho = calculateField(posX,posY);
                   if (!ho){break;}
-                  posX += 0.000625*Math.cos(a*Math.PI/4);
-                  posY += 0.000625*Math.sin(a*Math.PI/4);
+                  posX += 0.000625*Math.cos(a*Math.PI/4)*2;
+                  posY += 0.000625*Math.sin(a*Math.PI/4)*2;
                   for (let o = 0; o < charges.length; o++){
                       if(i != o && (posX-charges[o].x)**2+(posY-charges[o].y)**2 < (posX-charges[i].x)**2+(posY-charges[i].y)**2){
                           outof2 = true;
