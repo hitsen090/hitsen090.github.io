@@ -141,7 +141,8 @@ let workerCode = `
                 canvasWidth,
                 canvasHeight,
                 startY,
-                endY
+                endY,
+                tech
             } = e.data;
             let DATA = new Uint8ClampedArray(sharedBgBuffer);
             const pots = new Float64Array(sharedPotentialBuffer);
@@ -150,7 +151,7 @@ let workerCode = `
             const equipotOffset1 = Math.floor(equipLineThickness/2);
             const equipotOffset2 = Math.ceil(equipLineThickness/2);
 
-            const logMaxPot = Math.log(maxAbsPot + 1);
+            const logMaxPot = Math.log(maxAbsPot*tech + 1);
 
             colorBgDefault = byteify(colorBgDefault);
             colorBgPos = byteify(colorBgPos);
@@ -338,6 +339,7 @@ async function render() {
                 canvasHeight,
                 startY,
                 endY,
+                tech: SETTINGS.tech
             });
         }
         // wait for everyone to cook
