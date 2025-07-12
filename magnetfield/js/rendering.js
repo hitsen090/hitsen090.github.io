@@ -46,7 +46,7 @@ function calculateMagPotential(x, y) {
         }
     }
     return A;*/
-    return calculateField(x,y).r*1000;
+    return calculateField(x,y).r;
 }
 
 function calculateMagField(x, y) {
