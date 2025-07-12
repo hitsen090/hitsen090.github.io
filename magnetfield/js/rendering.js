@@ -466,7 +466,7 @@ async function render() {
                         if((posX-posXs)**2+(posY-posYs)**2 > 100){
                             if(charges[i].q>0){
                               starts.push([posX,posY,i,a, zaehler, ho.r, true]);
-                            else{
+                            }else{
                               starts.push([posX,posY,i,a, zaehler, ho.r, false]);
                             }
                             if(zaehler2 == 1){
