@@ -487,7 +487,7 @@ async function render() {
             }
             lines.set(i,angle); //the langthest line
         }
-        if (p<1){p++; alert(starts[1][6]);}
+      //  if (p<1){p++; alert(starts[1][6]);}
         lines.set(-2,[-2,999]);
         //let konstant = starts[4][5]*Math.sqrt((starts[4][0]-starts[3][0])**2+(starts[4][1]-starts[3][1])**2);
         let sum = 0;
