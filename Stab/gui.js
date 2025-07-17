@@ -29,25 +29,25 @@ let listeners = [
     {sel: "#slider_E_d", type: "slider", var: "arrowsOpacity", def: "1", defVar: 1, preprocess: v => parseFloat(v)},
     {sel: "#slider_E_t", type: "slider", var: "arrowsThickness", def: "2", defVar: 2, preprocess: v => parseInt(v)},
     
-    {sel: "#g", type: "slider", var: "g", def: "9.8", defVar: 9.8, callback: e=>{
+    {sel: "#g", type: "", event: "input",var: "g", def: "9.8", defVar: 9.8, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#l", type: "slider", var: "l", def: "1", defVar: 1, callback: e=>{
+    {sel: "#l", type: "", event: "input",var: "l", def: "1", defVar: 1, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#q", type: "slider", var: "q", def: "1000", defVar: 1000, callback: e=>{
+    {sel: "#q", type: "", event: "input",var: "q", def: "1000", defVar: 1000, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#k", type: "slider", var: "k", def: "10000", defVar: 10000, callback: e=>{
+    {sel: "#k", type: "", event: "input",var: "k", def: "10000", defVar: 10000, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#alpha", type: "slider", var: "alpha", def: "0.001", defVar: 0.001, callback: e=>{
+    {sel: "#alpha", type: "", event: "input",var: "alpha", def: "0.001", defVar: 0.001, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#v", type: "slider", var: "v", def: "1000", defVar: 1000, callback: e=>{
+    {sel: "#v", type: "", event: "input",var: "v", def: "1000", defVar: 1000, callback: e=>{
         updateJSI18N();
     }},
-    {sel: "#dt", type: "slider", var: "dt", def: "0.0001", defVar: 0.0001, callback: e=>{
+    {sel: "#dt", type: "", event: "input",var: "dt", def: "0.0001", defVar: 0.0001, callback: e=>{
         updateJSI18N();
     }},
     {sel: "#slider_E", type: "slider", var: "arrowsSpacing", def: "20", defVar: 20, callback: e=>{
