@@ -164,7 +164,7 @@ $("#tools > input").on('change', e => {
     }
 });
 
-$("#val_charge").on('blur', e => {
+/*$("#val_charge").on('blur', e => {
     let text = $("#val_charge").text();
     let val = SETTINGS.placedCharge;
     try {
@@ -173,7 +173,7 @@ $("#val_charge").on('blur', e => {
     if(!isNaN(text)) SETTINGS.placedCharge = val;
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
     $("#slider_charge").val(Math.log10(2*SETTINGS.placedCharge));
-});
+});*/
 
 $("#btn_clear").on('click', e => {
     let message = SETTINGS.MAGNETIC ? I18N[LANG].clear_msgM : I18N[LANG].clear_msg;
