@@ -212,18 +212,18 @@ $('#check_magnetic').on('change', e => {
 
 function updateJSI18N() {
     // update time/fps display
-    if (!SETTINGS.animatedMode) $('#progress').text(I18N[LANG].rendered.replace('%time%', lastRenderTime.toString()));
-    else {
-        $('#progress').html(I18N[LANG].rendered_fps.replace('%fps%', runningFPS.toFixed(2)));
-    }
+   // if (!SETTINGS.animatedMode) $('#progress').text(I18N[LANG].rendered.replace('%time%', lastRenderTime.toString()));
+    //else {
+       // $('#progress').html(I18N[LANG].rendered_fps.replace('%fps%', runningFPS.toFixed(2)));
+   // }
     // update Coulomb units
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
-    $("#gtext").html(SETTINGS.placedCharge.toFixed(2));
-    $("#ltext").html(SETTINGS.placedCharge.toFixed(2));
-    $("#ktext").html(SETTINGS.placedCharge.toFixed(2));
-    $("#qtext").html(SETTINGS.placedCharge.toFixed(2));
-    $("#vtext").html(SETTINGS.placedCharge.toFixed(2));
-    $("#dttext").html(SETTINGS.placedCharge.toFixed(2));
+    $("#gtext").html(SETTINGS.g.toFixed(2));
+    $("#ltext").html(SETTINGS.l.toFixed(2));
+    $("#ktext").html(SETTINGS.k.toFixed(2));
+    $("#qtext").html(SETTINGS.q.toFixed(2));
+    $("#vtext").html(SETTINGS.v.toFixed(2));
+    $("#dttext").html(SETTINGS.dt.toFixed(2));
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
 }
 
