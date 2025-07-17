@@ -187,7 +187,7 @@ $('#check_magnetic').on('change', e => {
     }
 });
 
-/*function updateJSI18N() {
+function updateJSI18N() {
     // update time/fps display
     if (!SETTINGS.animatedMode) $('#progress').text(I18N[LANG].rendered.replace('%time%', lastRenderTime.toString()));
     else {
@@ -195,7 +195,7 @@ $('#check_magnetic').on('change', e => {
     }
     // update Coulomb units
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2))
-}*/
+}
 
 /*let draggingIndex = -1;
 let draggingOffset = { x: 0, y: 0 }; // distance from center of charge to mouse pointer when dragging
