@@ -27,6 +27,14 @@
             <div id="electricTools" style="width: 100%">
                 <div id="tools">
                 <span class="holds" id="hold_charge">
+                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Charge of the placed particle:</span>
+                    <span id="hold_charge_inner">
+                        <input type="range" id="slider_charge" min="0" max="3" step="0.001" value="0.602" autocomplete="off">
+                        <span id="val_charge" contenteditable>2.00</span>
+                        <span id="chargeunit" data-i18n="chargeunit" data-i18n-m="currentunit"> μC</span>
+                    </span>
+                </span>
+                <span class="holds" id="hold_charge">
                     <span data-i18n="chargelabel" data-i18n-m="currentlabel">g:</span>
                     <span id="hold_charge_inner">
                         <input type="range" id="g" min="0" max="15" step="0.001" value="9.8" autocomplete="off">
