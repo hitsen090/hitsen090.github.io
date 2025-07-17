@@ -187,7 +187,7 @@ $('#check_magnetic').on('change', e => {
     }
 });
 
-function updateJSI18N() {
+/*function updateJSI18N() {
     // update time/fps display
     if (!SETTINGS.animatedMode) $('#progress').text(I18N[LANG].rendered.replace('%time%', lastRenderTime.toString()));
     else {
@@ -195,9 +195,9 @@ function updateJSI18N() {
     }
     // update Coulomb units
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2))
-}
+}*/
 
-let draggingIndex = -1;
+/*let draggingIndex = -1;
 let draggingOffset = { x: 0, y: 0 }; // distance from center of charge to mouse pointer when dragging
 let draggingCoords = { x: -100, y: -100 };
 let dragType = "charge";
@@ -290,7 +290,7 @@ function clickOrStartDrag(e) {
     }
     updateCursor(e);
 }
-
+*//*
 interact.pointerMoveTolerance(5);
 interact(canvasGUI)
     .draggable({
@@ -385,7 +385,7 @@ function updateCursor(e) {
         }
     }
     canvasGUI.style.cursor = draggingIndex == -1 ? (onFlag ? "grab" : "crosshair") : "grabbing";
-}
+}*/
 
 let sharedPotentialBuffer;
 let sharedBgBuffer
