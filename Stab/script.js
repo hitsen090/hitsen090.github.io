@@ -1,3 +1,4 @@
+document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 //
 async function render() {
     //performance.mark('renderStart');
