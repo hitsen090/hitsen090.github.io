@@ -92,19 +92,19 @@ for (let i of listeners) {
     case "checkbox":
         callback = () => {
             SETTINGS[i.var] = $(i.sel).is(":checked");
-            render();
+            //render();
         };
         break;
     case "slider":
         callback = e => {
             SETTINGS[i.var] = i.preprocess(e.target.value);
-            render();
+            //render();
         };
         break;
     case "color":
         callback = e => {
             SETTINGS[i.var] = hexToArr(e.target.value);
-            render();
+            //render();
         };
         break;
     default:
@@ -232,7 +232,7 @@ function updateJSI18N() {
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
 }
 
-
+alert(3);
 let sharedPotentialBuffer;
 let sharedBgBuffer
 let setCanvasSize = () => {
@@ -256,8 +256,8 @@ let setCanvasSize = () => {
 }
 $(window).on("resize", debounce(() => {
     setCanvasSize();
-    animateWithoutRequest();
-    render();
+    //animateWithoutRequest();
+   // render();
 }));
 
 $("#collapse").on("click", () => {
