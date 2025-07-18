@@ -229,7 +229,14 @@ details[open] > summary::before {
     justify-content: center;
     align-items: center;
     width: 100%;
-}#hold_charge_inner {
+}#hold_dt_inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#hold_v_inner {
     display: flex;
     flex-direction: row;
     justify-content: center;
