@@ -19,7 +19,7 @@ async function render() {
    `;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   worker.onmessage = (e) => {
+   workers.onmessage = (e) => {
       alert(e.data);
    };
    }catch(e){if(p<1){alert(e);p++;}}
