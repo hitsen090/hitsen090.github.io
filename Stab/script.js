@@ -3,6 +3,7 @@ let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
 let I = SETTINGS.m*SETTINGS.l^2/3;
 let l = SETTINGS.l;
 let g = SETTINGS.g;
+let p = 0;
 let w1 = 0;
 let w2 = 0;
 let alpha2 = 0;
@@ -31,7 +32,7 @@ let setCanvasSize = () => {
     render();
 }
 setCanvasSize();
-let p = 0;
+
 //
 async function render() {
    try{
