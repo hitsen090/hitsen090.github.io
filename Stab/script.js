@@ -13,13 +13,15 @@ let p = 0;
 async function render() {
    try{
    let workerCode = `
-   while(1==1){
    setTimeout(() => {
-   alert("A");
-   }, 2000);}
+   postMessage("A");
+   }, 2000);
    `;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
+   worker.onmessage = (e) => {
+      alert(e.data);
+   };
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
    /* if (isRendering) return;
