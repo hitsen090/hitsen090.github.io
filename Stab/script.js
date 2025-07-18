@@ -9,6 +9,7 @@ let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
 render();
 const canvas = $('#can')[0];
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 let p = 0;
 //
 async function render() {
@@ -24,11 +25,11 @@ async function render() {
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    workers.onmessage = (e) => {
-      canvas.clearRect(0,0,1000,1000);
-      canvas.beginPath();
-      canvas.moveTo(100,100);
-      canvas.lineTo(200,e.data);
-      canvas.stroke();
+      ctx.clearRect(0,0,1000,1000);
+      ctx.beginPath();
+      ctx.moveTo(100,100);
+      ctx.lineTo(200,e.data);
+      ctx.stroke();
    };
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
