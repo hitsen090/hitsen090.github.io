@@ -13,9 +13,10 @@ let p = 0;
 async function render() {
    try{
    let workerCode = `
+   while(true){
    setTimeout(() => {
    postMessage("A");
-   }, 2000);
+   }, 2000);}
    `;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
