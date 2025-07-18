@@ -220,7 +220,7 @@ function updateJSI18N() {
        // $('#progress').html(I18N[LANG].rendered_fps.replace('%fps%', runningFPS.toFixed(2)));
    // }
     // update Coulomb units
-    $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
+  //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
     $("#gtext").html(SETTINGS.g.toFixed(2));
     $("#ltext").html(SETTINGS.l.toFixed(2));
     $("#ktext").html(SETTINGS.k.toFixed(2));
