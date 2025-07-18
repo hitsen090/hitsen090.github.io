@@ -1,4 +1,5 @@
 // Listeners for all GUI
+alert(2);
 const canvas = $('#can')[0];
 const canvasGUI = $('#cangui')[0];
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
