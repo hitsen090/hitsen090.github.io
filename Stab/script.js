@@ -20,7 +20,7 @@ async function render() {
    ii += 50;
    }, 2000);
    `;
-   canvas.startPath(100,100);
+   //canvas.startPath(100,100);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    workers.onmessage = (e) => {
