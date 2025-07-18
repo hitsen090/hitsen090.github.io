@@ -1,8 +1,26 @@
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
+let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
+let I = SETTINGS.m*SETTINGS.l^2/3;
+let l = SETTINGS.l;
+let g = SETTINGS.g;
+let w1 = 0;
+let w2 = 0;
+let alpha2 = 0;
+let alpha1 = SETTINGS.alpha;
+render();
 //
 async function render() {
+   let workerCode = '
+   while(1=1){
+   setTimeout(() => {
+   alert("A");
+   }, 2000);}
+   ';
+   const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
+   let workers = new Worker(workerURL);
+   
     //performance.mark('renderStart');
-    if (isRendering) return;
+   /* if (isRendering) return;
     isRendering = true;
 
     clearTimeout(fpsTimeout);
@@ -23,5 +41,6 @@ async function render() {
     //performance.mark('renderEnd');
     startTime = currTime;
 
-    fpsTimeout = setTimeout(e => startTime = null, 100);
+    fpsTimeout = setTimeout(e => startTime = null, 100);*/
+    
 }
