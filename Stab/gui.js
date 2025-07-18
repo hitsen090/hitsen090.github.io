@@ -436,7 +436,7 @@ let setCanvasSize = () => {
     sharedPotentialBuffer = new SharedArrayBuffer(Float64Array.BYTES_PER_ELEMENT * potsWidth * potsHeight);
     sharedBgBuffer = new SharedArrayBuffer(Uint8ClampedArray.BYTES_PER_ELEMENT * canvas.width * canvas.height * 4);
 
-    animateWithoutRequest();
+   // animateWithoutRequest();
     render();
 }
 $(window).on("resize", debounce(() => {
