@@ -25,8 +25,9 @@ async function render() {
    let workers = new Worker(workerURL);
    workers.onmessage = (e) => {
       canvas.clearRect(0,0,1000,1000);
-      canvas.startPath(100,100);
-      canvas.moveTo(200,e.data);
+      canvas.beginPath();
+      canvas.moveTo(100,100);
+      canvas.lineTo(200,e.data);
       canvas.stroke();
    };
    }catch(e){if(p<1){alert(e);p++;}}
