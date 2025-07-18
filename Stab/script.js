@@ -24,13 +24,13 @@ async function render() {
    //canvas.startPath(100,100);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   workers.onmessage = (e) => {
+   //workers.onmessage = (e) => {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(100,100);
-      ctx.lineTo(200,e.data);
+      ctx.lineTo(200,200);
       ctx.stroke();
-   };
+ //  };
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
    /* if (isRendering) return;
