@@ -7,9 +7,26 @@ let w1 = 0;
 let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
-render();
 const canvas = $('#can')[0];
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
+let setCanvasSize = () => {
+    var bounds = canvas.getBoundingClientRect();
+    canvas.setAttribute("width", bounds.width);
+    canvas.width = bounds.width;
+    canvas.setAttribute("height", bounds.height);
+    canvas.height = bounds.height;
+    canvasGUI.setAttribute("width", bounds.width);
+    canvasGUI.width = bounds.width;
+    canvasGUI.setAttribute("height", bounds.height);
+    canvasGUI.height = bounds.height;
+
+    const potsWidth = canvas.width + 10;
+    const potsHeight = canvas.height + 10;
+    sharedPotentialBuffer = new SharedArrayBuffer(Float64Array.BYTES_PER_ELEMENT * potsWidth * potsHeight);
+    sharedBgBuffer = new SharedArrayBuffer(Uint8ClampedArray.BYTES_PER_ELEMENT * canvas.width * canvas.height * 4);
+
+    render();
+}
 setCanvasSize();
 let p = 0;
 //
