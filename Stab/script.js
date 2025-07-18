@@ -8,19 +8,25 @@ let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
 render();
+const canvas = $('#can')[0];
 let p = 0;
 //
 async function render() {
    try{
    let workerCode = `
+   let ii = 0
    setInterval(() => {
-   postMessage("A");
+   postMessage(ii);
+   ii += 50;
    }, 2000);
    `;
+   canvas.startPath(100,100);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    workers.onmessage = (e) => {
-      alert(e.data);
+      canvas.clearRect(0,0,1000,1000);
+      canvas.startPath(100,100);
+      canvas.moveTo(200,e.data);
    };
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
