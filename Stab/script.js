@@ -13,6 +13,7 @@ render();
 
 //
 async function render() {
+   alert(2);
    try{
    let workerCode = `
    let ii = 0
