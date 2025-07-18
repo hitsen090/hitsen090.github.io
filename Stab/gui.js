@@ -437,7 +437,7 @@ let setCanvasSize = () => {
     sharedBgBuffer = new SharedArrayBuffer(Uint8ClampedArray.BYTES_PER_ELEMENT * canvas.width * canvas.height * 4);
 
    // animateWithoutRequest();
-    render();
+    //render();
 }
 $(window).on("resize", debounce(() => {
     setCanvasSize();
