@@ -10,12 +10,12 @@ let alpha1 = SETTINGS.alpha;
 render();
 //
 async function render() {
-   let workerCode = '
+   let workerCode = `
    while(1=1){
    setTimeout(() => {
    alert("A");
    }, 2000);}
-   ';
+   `;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    
