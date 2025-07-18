@@ -8,7 +8,7 @@ let w1 = 0;
 let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
-
+setCanvasSize();
 render();
 
 //
