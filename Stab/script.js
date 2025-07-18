@@ -15,6 +15,9 @@ let setCanvasSize = () => {
     canvas.width = bounds.width;
     canvas.setAttribute("height", bounds.height);
     canvas.height = bounds.height;
+    const imageData = new ImageData(canvas.width, canvas.height)
+    imageData.data.set(new Uint8ClampedArray(sharedBgBuffer));
+    ctx.putImageData(imageData, 0, 0);
     /*canvasGUI.setAttribute("width", bounds.width);
     canvasGUI.width = bounds.width;
     canvasGUI.setAttribute("height", bounds.height);
