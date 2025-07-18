@@ -11,7 +11,7 @@ render();
 //
 async function render() {
    let workerCode = `
-   while(1=1){
+   while(1==1){
    setTimeout(() => {
    alert("A");
    }, 2000);}
