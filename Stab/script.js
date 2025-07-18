@@ -27,6 +27,7 @@ async function render() {
       canvas.clearRect(0,0,1000,1000);
       canvas.startPath(100,100);
       canvas.moveTo(200,e.data);
+      canvas.stroke();
    };
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
