@@ -10,6 +10,7 @@ let alpha1 = SETTINGS.alpha;
 render();
 const canvas = $('#can')[0];
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
+setCanvasSize();
 let p = 0;
 //
 async function render() {
