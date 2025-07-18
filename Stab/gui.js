@@ -224,7 +224,7 @@ function updateJSI18N() {
     $("#qtext").html(SETTINGS.q.toFixed(2));
     $("#alphatext").html(SETTINGS.alpha.toFixed(4));
     $("#vtext").html(SETTINGS.v.toFixed(2));
-    $("#dttext").html(SETTINGS.dt.toFixed(2));
+    $("#dttext").html(SETTINGS.dt.toFixed(6));
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
 }
 
