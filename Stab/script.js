@@ -15,10 +15,10 @@ let setCanvasSize = () => {
     canvas.width = bounds.width;
     canvas.setAttribute("height", bounds.height);
     canvas.height = bounds.height;
-    canvasGUI.setAttribute("width", bounds.width);
+    /*canvasGUI.setAttribute("width", bounds.width);
     canvasGUI.width = bounds.width;
     canvasGUI.setAttribute("height", bounds.height);
-    canvasGUI.height = bounds.height;
+    canvasGUI.height = bounds.height;*/
 
     const potsWidth = canvas.width + 10;
     const potsHeight = canvas.height + 10;
