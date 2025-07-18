@@ -8,8 +8,10 @@ let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
 render();
+let p = 0;
 //
 async function render() {
+   try{
    let workerCode = `
    while(1==1){
    setTimeout(() => {
@@ -18,7 +20,7 @@ async function render() {
    `;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   
+   }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
    /* if (isRendering) return;
     isRendering = true;
