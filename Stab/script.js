@@ -1,6 +1,6 @@
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
-let I = SETTINGS.m*SETTINGS.l^2/3;
+let I = m*SETTINGS.l**2/3;
 let l = SETTINGS.l;
 let g = SETTINGS.g;
 let p = 0;
