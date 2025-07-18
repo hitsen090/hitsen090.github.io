@@ -8,10 +8,7 @@ let w1 = 0;
 let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
-const canvas = $('#can')[0];
-const canvasGUI = $('#cangui')[0];
-const ctx = canvas.getContext('2d', { willReadFrequently: true });
-const ctxGUI = canvasGUI.getContext('2d');
+
 render();
 
 //
