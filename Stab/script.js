@@ -23,6 +23,7 @@ async function render() {
    try{
    let workerCode = `
    onmessage = funktion(e){
+     alert(666);
      let {
                   g,l,m,iI,alpha,dt,v,k
               } = e.data;
@@ -48,6 +49,7 @@ async function render() {
    height = canvas.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
+   alert(910);
    workers.postMessage({g:g,
       l:l,
       m:m,
