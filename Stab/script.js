@@ -14,7 +14,7 @@ let alpha1 = SETTINGS.alpha;
 alert(11);
 setCanvasSize();
 alert(12);
-render();
+//render();
 
 //
 async function render() {
