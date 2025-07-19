@@ -16,7 +16,7 @@ render();
 
 //
 async function render() {
-   alert(2);
+   alert(ctx.height);
    try{
    let workerCode = `
    let {
@@ -39,15 +39,22 @@ async function render() {
    }, 1/v);
    `;
    //canvas.startPath(100,100);
+   width = ctx.width;
+   height = ctx.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    workers.postMessage({g,l,m,iI,SETTINGS.alpha,SETTINGS.dt,SETTINGS.v,SETTINGS.k});
    workers.onmessage = (e) => {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
-      ctx.moveTo(100,100);
-      ctx.lineTo(200,e.data);
-      alert(9);
+      ctx.moveTo(0.5*width,0.75*height);
+      let x2 = 0.5*width-0.25*height*Math.cos(e.data.alpha2);
+      let y2 = 0.75*height-0.25*height*Math.sin(e.data.alpha2);
+      let x1 = x2 +0.25*heigth*Math.cos(e.data.alpha1);
+      let y1 = y2 + 0.25*heigth*Math.sin(e.data.alpha1);
+      ctx.lineTo(x2,y2);
+      ctx.lineTo(x1,y1);
+      //alert(9);
       ctx.stroke();
    };
    }catch(e){if(p<1){alert(e);p++;}}
