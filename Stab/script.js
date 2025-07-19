@@ -61,7 +61,7 @@ async function render() {
    workers.onmessage = (e) => {
       t += SETTINGS.dt;
       if(SETTINGS.stop){
-         STTINGS.stop = false;
+         SETTINGS.stop = false;
          workers.terminate();
       }
       $("#timme").html(t.toFixed(6));
