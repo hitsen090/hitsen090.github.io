@@ -46,15 +46,22 @@ async function render() {
    height = canvas.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   workers.postMessage({g,l,m,iI,SETTINGS.alpha,SETTINGS.dt,SETTINGS.v,SETTINGS.k});
+   workers.postMessage({g:g,
+      l:l,
+      m:m,
+      iI:iI,
+      alpha:SETTINGS.alpha,
+      dt:SETTINGS.dt,
+      v:SETTINGS.v,
+      k:SETTINGS.k});
    workers.onmessage = (e) => {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(0.5*width,0.75*height);
       let x2 = 0.5*width-0.25*height*Math.cos(e.data.alpha2);
       let y2 = 0.75*height-0.25*height*Math.sin(e.data.alpha2);
-      let x1 = x2 +0.25*heigth*Math.cos(e.data.alpha1);
-      let y1 = y2 + 0.25*heigth*Math.sin(e.data.alpha1);
+      let x1 = x2 +0.25*height*Math.cos(e.data.alpha1);
+      let y1 = y2 + 0.25*height*Math.sin(e.data.alpha1);
       ctx.lineTo(x2,y2);
       ctx.lineTo(x1,y1);
       //alert(9);
