@@ -60,6 +60,9 @@ async function render() {
       k:SETTINGS.k});
    workers.onmessage = (e) => {
       t += SETTINGS.dt;
+      if(SETTINGS.stop){
+         workers.terminate();
+      }
       $("#timme").html(t.toFixed(6));
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
