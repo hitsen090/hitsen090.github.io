@@ -59,7 +59,7 @@ async function render() {
       v:SETTINGS.v,
       k:SETTINGS.k});
    workers.onmessage = (e) => {
-      t += dt;
+      t += SETTINGS.dt;
       $("#timme").html(t.toFixed(6));
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
