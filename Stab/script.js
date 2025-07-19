@@ -1,5 +1,6 @@
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 alert(8);
+sleep(4000);
 let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
 let iI = m*SETTINGS.l**2/3;
 let l = SETTINGS.l;
@@ -36,7 +37,7 @@ async function render() {
    alpha1 += w1*dt;
    alpha2 += w2*dt;
    postMessage({alpha1,alpha2});
-   }, 1/v);
+   }, 1000/v);
    `;
    //canvas.startPath(100,100);
    width = ctx.width;
