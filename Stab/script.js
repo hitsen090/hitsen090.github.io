@@ -20,18 +20,21 @@ async function render() {
    try{
    let workerCode = `
    let {
-                g,l,m,iI,alpha
+                g,l,m,iI,alpha,dt,v
             } = e.data;
-   let ii = 0
+   let w1 = 0;
+   let w2 = 0;
+   let alpha2 = 0;
+   let alpha1 = alpha;
    setInterval(() => {
-   postMessage(ii);
+   postMessage();
    ii += 50;
-   }, 2000);
+   }, 1/v);
    `;
    //canvas.startPath(100,100);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   workers.postMessage({g,l,m,iI,SETTINGS.alpha});
+   workers.postMessage({g,l,m,iI,SETTINGS.alpha,SETTINGS.dt,SETTINGS.v});
    workers.onmessage = (e) => {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
