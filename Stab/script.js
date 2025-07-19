@@ -19,6 +19,9 @@ async function render() {
    alert(2);
    try{
    let workerCode = `
+   let {
+                g,l,m,iI,alpha
+            } = e.data;
    let ii = 0
    setInterval(() => {
    postMessage(ii);
@@ -28,6 +31,7 @@ async function render() {
    //canvas.startPath(100,100);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
+   workers.postMessage({g,l,m,iI,SETTINGS.alpha});
    workers.onmessage = (e) => {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
