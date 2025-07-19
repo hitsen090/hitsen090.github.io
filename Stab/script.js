@@ -61,10 +61,10 @@ async function render() {
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(0.5*width,0.75*height);
-      let x2 = 0.5*width-0.25*height*Math.cos(e.data.alpha2);
-      let y2 = 0.75*height-0.25*height*Math.sin(e.data.alpha2);
-      let x1 = x2 +0.25*height*Math.cos(e.data.alpha1);
-      let y1 = y2 + 0.25*height*Math.sin(e.data.alpha1);
+      let x2 = 0.5*width-0.25*height*Math.sin(e.data.alpha2);
+      let y2 = 0.75*height-0.25*height*Math.cos(e.data.alpha2);
+      let x1 = x2 +0.25*height*Math.sin(e.data.alpha1);
+      let y1 = y2 + 0.25*height*Math.cos(e.data.alpha1);
       ctx.lineTo(x2,y2);
       ctx.lineTo(x1,y1);
       //alert(9);
