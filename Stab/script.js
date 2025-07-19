@@ -20,7 +20,7 @@ async function render() {
    let w2 = 0;
    let alpha2 = 0;
    let alpha1 = SETTINGS.alpha;
-   alert(ctx.height);
+   //alert(ctx.height);
    try{
    let workerCode = `
    onmessage = function(e){
@@ -49,7 +49,7 @@ async function render() {
    let height = canvas.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
-   alert(910);
+   //alert(910);
    workers.postMessage({g:g,
       l:l,
       m:m,
