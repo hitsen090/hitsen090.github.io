@@ -53,7 +53,7 @@ let listeners = [
         SETTINGS.alpha = parseFloat(e.target.value);
         updateJSI18N();
     }},
-    {sel: "#v", type: "", event: "input",var: "v", def: "1000", defVar: 1000, callback: e=>{
+    {sel: "#v", type: "", event: "input",var: "v", def: "10", defVar: 10, callback: e=>{
         SETTINGS.v = parseFloat(e.target.value);
         updateJSI18N();
     }},
