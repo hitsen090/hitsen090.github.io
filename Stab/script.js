@@ -1,16 +1,6 @@
 alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 alert(8);
-let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
-let iI = m*SETTINGS.l**2/3;
-let l = SETTINGS.l;
-let g = SETTINGS.g;
-let t = 0.00000;
-let p = 0;
-let w1 = 0;
-let w2 = 0;
-let alpha2 = 0;
-let alpha1 = SETTINGS.alpha;
 alert(11);
 
 setCanvasSize();
@@ -20,6 +10,16 @@ render();
 
 //
 async function render() {
+   let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
+   let iI = m*SETTINGS.l**2/3;
+   let l = SETTINGS.l;
+   let g = SETTINGS.g;
+   let t = 0.00000;
+   let p = 0;
+   let w1 = 0;
+   let w2 = 0;
+   let alpha2 = 0;
+   let alpha1 = SETTINGS.alpha;
    alert(ctx.height);
    try{
    let workerCode = `
