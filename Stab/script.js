@@ -9,6 +9,7 @@ let w1 = 0;
 let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
+
 setCanvasSize();
 render();
 
@@ -31,6 +32,7 @@ async function render() {
       ctx.beginPath();
       ctx.moveTo(100,100);
       ctx.lineTo(200,200);
+      alert(9);
       ctx.stroke();
  //  };
    }catch(e){if(p<1){alert(e);p++;}}
