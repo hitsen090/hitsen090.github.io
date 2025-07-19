@@ -1,3 +1,4 @@
+alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 alert(8);
 sleep(4000);
