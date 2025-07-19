@@ -18,7 +18,7 @@ setCanvasSize();
 //render();
 
 //
-async function render() {
+/*async function render() {
    alert(ctx.height);
    try{
    let workerCode = `
@@ -63,4 +63,4 @@ async function render() {
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
     
-}
+}*/
