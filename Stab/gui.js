@@ -1,6 +1,5 @@
 // Listeners for all GUI
 alert(2);
-while(true){}
 const canvas = $('#can')[0];
 const canvasGUI = $('#cangui')[0];
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -278,3 +277,4 @@ function setRealVh() {
 }
 setRealVh();
 window.addEventListener('resize', setRealVh);
+alert(888);
