@@ -36,6 +36,7 @@ let listeners = [
     {sel: "#g", type: "", event: "input",var: "g", def: "9.8", defVar: 9.8, callback: e=>{
         SETTINGS.g = parseFloat(e.target.value);
         updateJSI18N();
+        workers.terminate();
         render();
     }},
     {sel: "#l", type: "", event: "input",var: "l", def: "1", defVar: 1, callback: e=>{
@@ -53,7 +54,7 @@ let listeners = [
     {sel: "#alpha", type: "", event: "input",var: "alpha", def: "0.2", defVar: 0.2, callback: e=>{
         SETTINGS.alpha = parseFloat(e.target.value);
         updateJSI18N();
-        //workers.terminate();
+        workers.terminate();
         render();
     }},
     {sel: "#v", type: "", event: "input",var: "v", def: "10", defVar: 10, callback: e=>{
