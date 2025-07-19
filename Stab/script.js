@@ -13,13 +13,12 @@ let alpha1 = SETTINGS.alpha;
 alert(11);
 
 setCanvasSize();
-alert(890);
 alert(canvas.height);
 
-//render();
+render();
 
 //
-/*async function render() {
+async function render() {
    alert(ctx.height);
    try{
    let workerCode = `
@@ -43,8 +42,8 @@ alert(canvas.height);
    }, 1000/v);
    `;
    //canvas.startPath(100,100);
-   width = ctx.width;
-   height = ctx.height;
+   width = canvas.width;
+   height = canvas.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    workers.postMessage({g,l,m,iI,SETTINGS.alpha,SETTINGS.dt,SETTINGS.v,SETTINGS.k});
@@ -64,4 +63,4 @@ alert(canvas.height);
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
     
-}*/
+}
