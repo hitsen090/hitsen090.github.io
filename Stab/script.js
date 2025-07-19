@@ -23,24 +23,24 @@ async function render() {
    try{
    let workerCode = `
    onmessage = funktion(e){
-   let {
-                g,l,m,iI,alpha,dt,v,k
-            } = e.data;
-   let w1 = 0;
-   let w2 = 0;
-   let alpha2 = 0;
-   let alpha1 = alpha;
-   let M1 = 0;
-   let M2 = 0;
-   setInterval(() => {
-   M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
-   M2 = m*g*l*alpha2 - k*alpha2 - M1;
-   w1 += M1*dt/iI;
-   w2 += M2*dt/iI;
-   alpha1 += w1*dt;
-   alpha2 += w2*dt;
-   postMessage({alpha1,alpha2});
-   }, 1000/v);
+     let {
+                  g,l,m,iI,alpha,dt,v,k
+              } = e.data;
+     let w1 = 0;
+     let w2 = 0;
+     let alpha2 = 0;
+     let alpha1 = alpha;
+     let M1 = 0;
+     let M2 = 0;
+     setInterval(() => {
+     M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
+     M2 = m*g*l*alpha2 - k*alpha2 - M1;
+     w1 += M1*dt/iI;
+     w2 += M2*dt/iI;
+     alpha1 += w1*dt;
+     alpha2 += w2*dt;
+     postMessage({alpha1,alpha2});
+     }, 1000/v);
    }
    `;
    //canvas.startPath(100,100);
