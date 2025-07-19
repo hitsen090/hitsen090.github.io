@@ -11,9 +11,10 @@ let w2 = 0;
 let alpha2 = 0;
 let alpha1 = SETTINGS.alpha;
 alert(11);
-/*
+
 setCanvasSize();
 alert(12);
+/*
 //render();
 
 //
