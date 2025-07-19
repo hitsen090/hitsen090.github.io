@@ -5,6 +5,7 @@ let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
 let iI = m*SETTINGS.l**2/3;
 let l = SETTINGS.l;
 let g = SETTINGS.g;
+let t = 0.00000;
 let p = 0;
 let w1 = 0;
 let w2 = 0;
@@ -58,6 +59,8 @@ async function render() {
       v:SETTINGS.v,
       k:SETTINGS.k});
    workers.onmessage = (e) => {
+      t += dt;
+      $("#timme").html(t.toFixed(6));
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(0.5*width,0.75*height);
