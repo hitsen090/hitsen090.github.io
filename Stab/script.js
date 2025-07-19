@@ -14,7 +14,7 @@ alert(11);
 
 setCanvasSize();
 alert(890);
-alert(ctx.height);
+alert(canvas.height);
 
 //render();
 
