@@ -1,7 +1,7 @@
 alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 alert(8);
-sleep(4000);
+while(true){}
 let m = SETTINGS.q*SETTINGS.l/SETTINGS.g;
 let iI = m*SETTINGS.l**2/3;
 let l = SETTINGS.l;
