@@ -256,11 +256,11 @@ let setCanvasSize = () => {
     //render();
 }
 alert(4);
-$(window).on("resize", debounce(() => {
+/*$(window).on("resize", debounce(() => {
     setCanvasSize();
     //animateWithoutRequest();
    // render();
-}));
+}));*/
 
 $("#collapse").on("click", () => {
     $("#controls").hide();
