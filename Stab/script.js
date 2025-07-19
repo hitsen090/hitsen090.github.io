@@ -44,8 +44,8 @@ async function render() {
    }
    `;
    //canvas.startPath(100,100);
-   width = canvas.width;
-   height = canvas.height;
+   let width = canvas.width;
+   let height = canvas.height;
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    alert(910);
