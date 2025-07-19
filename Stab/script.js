@@ -22,7 +22,7 @@ async function render() {
    alert(ctx.height);
    try{
    let workerCode = `
-   onmessage = funktion(e){
+   onmessage = function(e){
      alert(666);
      let {
                   g,l,m,iI,alpha,dt,v,k
