@@ -232,9 +232,10 @@ function updateJSI18N() {
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
 }
 
-
+alert(6);
 let sharedPotentialBuffer;
 let sharedBgBuffer;
+alert(5);
 let setCanvasSize = () => {
     var bounds = canvas.getBoundingClientRect();
     canvas.setAttribute("width", bounds.width);
@@ -254,12 +255,13 @@ let setCanvasSize = () => {
    // animateWithoutRequest();
     //render();
 }
+alert(4);
 $(window).on("resize", debounce(() => {
     setCanvasSize();
     //animateWithoutRequest();
    // render();
 }));
-alert(3);
+
 $("#collapse").on("click", () => {
     $("#controls").hide();
     $("#uncollapse").show();
