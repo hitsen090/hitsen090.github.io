@@ -35,7 +35,7 @@ async function render() {
      let M2 = 0;
      setInterval(() => {
      M1 = m*g*l*alpha1 - k*Math.sin(alpha1-alpha2);
-     M2 = m*g*l*alpha2 - k*Math.sin(alpha2) - M1;
+     M2 = m*g*l*alpha2 - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2);
      w1 += M1*dt/iI;
      w2 += M2*dt/iI;
      alpha1 += w1*dt;
