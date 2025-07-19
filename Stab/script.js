@@ -23,7 +23,6 @@ async function render() {
    try{
    let workerCode = `
    onmessage = function(e){
-     alert(666);
      let {
                   g,l,m,iI,alpha,dt,v,k
               } = e.data;
