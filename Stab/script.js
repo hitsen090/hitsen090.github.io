@@ -58,6 +58,7 @@ async function render() {
       v:SETTINGS.v,
       k:SETTINGS.k});
    workers.onmessage = (e) => {
+      alert(0);
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(0.5*width,0.75*height);
