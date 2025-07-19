@@ -14,7 +14,7 @@ alert(11);
 
 setCanvasSize();
 alert(12);
-/*
+
 //render();
 
 //
@@ -63,4 +63,4 @@ async function render() {
    }catch(e){if(p<1){alert(e);p++;}}
     //performance.mark('renderStart');
     
-}*/
+}
