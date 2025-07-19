@@ -92,13 +92,13 @@ for (let i of listeners) {
     case "checkbox":
         callback = () => {
             SETTINGS[i.var] = $(i.sel).is(":checked");
-            //render();
+            render();
         };
         break;
     case "slider":
         callback = e => {
             SETTINGS[i.var] = i.preprocess(e.target.value);
-            //render();
+            render();
         };
         break;
     case "color":
