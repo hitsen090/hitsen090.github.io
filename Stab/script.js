@@ -22,6 +22,7 @@ async function render() {
    alert(ctx.height);
    try{
    let workerCode = `
+   onmessage = funktion(e){
    let {
                 g,l,m,iI,alpha,dt,v,k
             } = e.data;
@@ -40,6 +41,7 @@ async function render() {
    alpha2 += w2*dt;
    postMessage({alpha1,alpha2});
    }, 1000/v);
+   }
    `;
    //canvas.startPath(100,100);
    width = canvas.width;
