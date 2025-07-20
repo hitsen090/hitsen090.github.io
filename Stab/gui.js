@@ -62,7 +62,7 @@ let listeners = [
         SETTINGS.stop = true;
         render();}
     }},
-    {sel: "#alpha", type: "", event: "input",var: "alpha", def: "0.2", defVar: 0.2, callback: e=>{
+    {sel: "#alpha", type: "", event: "input",var: "alpha", def: "0.3", defVar: 0.3, callback: e=>{
         SETTINGS.alpha = parseFloat(e.target.value);
         updateJSI18N();
         if(!SETTINGS.stop){
