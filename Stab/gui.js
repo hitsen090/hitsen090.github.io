@@ -43,24 +43,24 @@ let listeners = [
     }},
     {sel: "#l", type: "", event: "input",var: "l", def: "1", defVar: 1, callback: e=>{
         SETTINGS.l = parseFloat(e.target.value);
+        updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}
-        updateJSI18N();
     }},
     {sel: "#q", type: "", event: "input",var: "q", def: "1000", defVar: 1000, callback: e=>{
         SETTINGS.q = parseFloat(e.target.value);
+        updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}
-        updateJSI18N();
     }},
     {sel: "#k", type: "", event: "input",var: "k", def: "10000", defVar: 10000, callback: e=>{
         SETTINGS.k = parseFloat(e.target.value);
+        updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}
-        updateJSI18N();
     }},
     {sel: "#alpha", type: "", event: "input",var: "alpha", def: "0.2", defVar: 0.2, callback: e=>{
         SETTINGS.alpha = parseFloat(e.target.value);
@@ -71,17 +71,17 @@ let listeners = [
     }},
     {sel: "#v", type: "", event: "input",var: "v", def: "10", defVar: 10, callback: e=>{
         SETTINGS.v = parseFloat(e.target.value);
+        updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}
-        updateJSI18N();
     }},
     {sel: "#dt", type: "", event: "input",var: "dt", def: "0.0001", defVar: 0.0001, callback: e=>{
         SETTINGS.dt = parseFloat(e.target.value);
+        updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}
-        updateJSI18N();
     }},
     {sel: "#slider_E", type: "slider", var: "arrowsSpacing", def: "20", defVar: 20, callback: e=>{
         updateJSI18N();
