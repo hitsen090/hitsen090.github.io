@@ -41,7 +41,7 @@ let listeners = [
         SETTINGS.stop = true;
         render();}
     }},
-    {sel: "#l", type: "", event: "input",var: "l", def: "1", defVar: 1, callback: e=>{
+    {sel: "#l", type: "", event: "input",var: "l", def: "1.9", defVar: 1.9, callback: e=>{
         SETTINGS.l = parseFloat(e.target.value);
         updateJSI18N();
         if(!SETTINGS.stop){
@@ -245,7 +245,7 @@ function updateJSI18N() {
     // update Coulomb units
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
     $("#gtext").html(SETTINGS.g.toFixed(2));
-    $("#ltext").html(SETTINGS.l.toFixed(2));
+    $("#ltext").html(SETTINGS.l.toFixed(5));
     $("#ktext").html(SETTINGS.k.toFixed(2));
     $("#qtext").html(SETTINGS.q.toFixed(2));
     $("#alphatext").html(SETTINGS.alpha.toFixed(4));
