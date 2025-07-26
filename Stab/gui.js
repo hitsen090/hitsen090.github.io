@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d', { willReadFrequently: true });
 const ctxGUI = canvasGUI.getContext('2d');
 let SETTINGS = {};
 SETTINGS.stop = false;
+SETTINGS.small = false;
 let listeners = [
     /*
         sel: selector for input
@@ -102,7 +103,11 @@ let listeners = [
     {sel: "#color_neg", type: "color", var: "colorBgNeg", def: "#0000ff", defVar: [0, 0, 255]},
     {sel: "#color_outline", type: "color", var: "colorOutline", def: "#ffffff", defVar: [255, 255, 255]},
     {sel: "#check_anim", type: "", var: "small", def: false, defVar: false, callback: e=>{
-        SETTINGS.small = e.target.value;
+        if(SETTINGS.small){
+            SETTINGS.small = false;
+        }else{
+            SETTINGS.small = true;
+        }
         updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
