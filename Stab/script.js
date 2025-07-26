@@ -31,13 +31,12 @@ async function render() {
      let alpha1 = alpha;
      let M1 = 0;
      let M2 = 0;
-     small = true;
      setInterval(() => {
      if(small){
        M1 = 0.5*m*g*l*alpha1 - k*(alpha1-alpha2);
        M2 = 0.5*m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
      }else{
-       M1 = 0.5m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
+       M1 = 0.5*m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
        M2 = 0.5*m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2);
      }
      w1 += M1*dt/iI;
@@ -51,7 +50,6 @@ async function render() {
    //canvas.startPath(100,100);
    let width = canvas.width;
    let height = canvas.height;
-   alert(999);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    //alert(910);
