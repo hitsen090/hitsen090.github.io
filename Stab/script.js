@@ -51,6 +51,7 @@ async function render() {
    //canvas.startPath(100,100);
    let width = canvas.width;
    let height = canvas.height;
+   alert(999);
    const workerURL = URL.createObjectURL(new Blob([workerCode], { type: "application/javascript" }));
    let workers = new Worker(workerURL);
    //alert(910);
@@ -64,7 +65,6 @@ async function render() {
       k:SETTINGS.k,
       small:SETTINGS.small});
    workers.onmessage = (e) => {
-      alert(888);
       t += SETTINGS.dt;
       if(SETTINGS.stop){
          SETTINGS.stop = false;
