@@ -76,7 +76,7 @@ let listeners = [
         SETTINGS.stop = true;
         render();}
     }},
-    {sel: "#dt", type: "", event: "input",var: "dt", def: "0.0001", defVar: 0.0001, callback: e=>{
+    {sel: "#dt", type: "", event: "input",var: "dt", def: "0.001", defVar: 0.001, callback: e=>{
         SETTINGS.dt = parseFloat(e.target.value);
         updateJSI18N();
         if(!SETTINGS.stop){
