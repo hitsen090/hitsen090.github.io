@@ -106,7 +106,7 @@ let listeners = [
         updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
-        render();}}
+        render();}}}
 ];
 
 SETTINGS.colorTool = [0, 255, 255];
