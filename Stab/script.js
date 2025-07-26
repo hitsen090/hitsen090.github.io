@@ -34,13 +34,14 @@ async function render() {
      let M1 = 0;
      let M2 = 0;
    //  setInterval(() => {
+     while(true){
      M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
      M2 = m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
      w1 += M1*dt/iI;
      w2 += M2*dt/iI;
      alpha1 += w1*dt;
      alpha2 += w2*dt;
-     postMessage({alpha1,alpha2});
+     postMessage({alpha1,alpha2});}
    //  }, 1000/v);
    }
    `;
