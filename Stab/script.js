@@ -64,6 +64,7 @@ async function render() {
       k:SETTINGS.k,
       small:SETTINGS.small});
    workers.onmessage = (e) => {
+      alert(888);
       t += SETTINGS.dt;
       if(SETTINGS.stop){
          SETTINGS.stop = false;
