@@ -25,7 +25,7 @@ async function render() {
    let workerCode = `
    onmessage = function(e){
      let {
-                  g,l,m,iI,alpha,dt,v,k
+                  g,l,m,iI,alpha,dt,v,k, small
               } = e.data;
      let w1 = 0;
      let w2 = 0;
@@ -34,8 +34,13 @@ async function render() {
      let M1 = 0;
      let M2 = 0;
      setInterval(() => {
-     M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
-     M2 = m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
+     if(small){
+       M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
+       M2 = m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
+     }else{
+       M1 = m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
+       M2 = m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2);
+     }
      w1 += M1*dt/iI;
      w2 += M2*dt/iI;
      alpha1 += w1*dt;
@@ -57,7 +62,8 @@ async function render() {
       alpha:SETTINGS.alpha,
       dt:SETTINGS.dt,
       v:SETTINGS.v,
-      k:SETTINGS.k});
+      k:SETTINGS.k,
+      small: SETTINGS.small});
    workers.onmessage = (e) => {
       t += SETTINGS.dt;
       if(SETTINGS.stop){
