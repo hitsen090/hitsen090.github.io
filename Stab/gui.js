@@ -103,7 +103,7 @@ let listeners = [
     {sel: "#color_outline", type: "color", var: "colorOutline", def: "#ffffff", defVar: [255, 255, 255]},
     {sel: "#check_anim", type: "checkbox", var: "small", def: false, defVar: false, callback: e=>{
         SETTINGS.small = e.target.value;
-        updateJSI18N();
+      //  updateJSI18N();
         if(!SETTINGS.stop){
         SETTINGS.stop = true;
         render();}}}
