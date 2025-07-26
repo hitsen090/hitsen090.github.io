@@ -23,7 +23,7 @@ async function render() {
    let workerCode = `
    onmessage = function(e){
      let {
-                  g,l,m,iI,alpha,dt,v,k, small
+                  g,l,m,iI,alpha,dt,v,k,small
               } = e.data;
      let w1 = 0;
      let w2 = 0;
@@ -61,7 +61,7 @@ async function render() {
       dt:SETTINGS.dt,
       v:SETTINGS.v,
       k:SETTINGS.k,
-      small: SETTINGS.small});
+      small:SETTINGS.small});
    workers.onmessage = (e) => {
       t += SETTINGS.dt;
       if(SETTINGS.stop){
