@@ -1,7 +1,5 @@
 alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
-alert(8);
-alert(11);
 
 setCanvasSize();
 alert(canvas.height);
@@ -35,11 +33,11 @@ async function render() {
      let M2 = 0;
      setInterval(() => {
      if(small){
-       M1 = m*g*l*alpha1 - k*(alpha1-alpha2);
-       M2 = m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
+       M1 = 0.5*m*g*l*alpha1 - k*(alpha1-alpha2);
+       M2 = 0.5*m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2);
      }else{
-       M1 = m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
-       M2 = m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2);
+       M1 = 0.5m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
+       M2 = 0.5*m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2);
      }
      w1 += M1*dt/iI;
      w2 += M2*dt/iI;
