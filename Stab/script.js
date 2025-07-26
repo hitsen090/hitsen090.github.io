@@ -41,7 +41,7 @@ async function render() {
      alpha1 += w1*dt;
      alpha2 += w2*dt;
      postMessage({alpha1,alpha2});
-     }, 100);
+     }, 10);
    }
    `;
    //canvas.startPath(100,100);
