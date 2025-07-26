@@ -31,6 +31,7 @@ async function render() {
      let alpha1 = alpha;
      let M1 = 0;
      let M2 = 0;
+     small = true;
      setInterval(() => {
      if(small){
        M1 = 0.5*m*g*l*alpha1 - k*(alpha1-alpha2);
