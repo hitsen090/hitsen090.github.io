@@ -37,7 +37,7 @@ async function render() {
        M2 = 0.5*m*g*l*alpha2 - k*alpha2 + k*(alpha1-alpha2) + m*g*l*(alpha1-alpha2)**2;
      }else{
        M1 = 0.5*m*g*l*Math.sin(alpha1) - k*Math.sin(alpha1-alpha2);
-       M2 = 0.5*m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2) + m*g*l*Math.sin(alpha1-alpha2)*Math.tg(alpha1-alpha2);
+       M2 = 0.5*m*g*l*Math.sin(alpha2) - k*Math.sin(alpha2) + k*Math.sin(alpha1-alpha2) + m*g*l*Math.sin(alpha1-alpha2)*Math.tan(alpha1-alpha2);
      }
      w1 += M1*dt/iI;
      w2 += M2*dt/iI;
