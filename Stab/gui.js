@@ -1,5 +1,4 @@
 // Listeners for all GUI
-alert(2);
 const canvas = $('#can')[0];
 const canvasGUI = $('#cangui')[0];
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -259,10 +258,8 @@ function updateJSI18N() {
   //  $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
 }
 
-alert(6);
 let sharedPotentialBuffer;
 let sharedBgBuffer;
-alert(5);
 let setCanvasSize = () => {
     var bounds = canvas.getBoundingClientRect();
     canvas.setAttribute("width", bounds.width);
@@ -282,7 +279,6 @@ let setCanvasSize = () => {
    // animateWithoutRequest();
     //render();
 }
-alert(4);
 /*$(window).on("resize", debounce(() => {
     setCanvasSize();
     //animateWithoutRequest();
@@ -304,4 +300,3 @@ function setRealVh() {
 }
 setRealVh();
 window.addEventListener('resize', setRealVh);
-alert(888);
