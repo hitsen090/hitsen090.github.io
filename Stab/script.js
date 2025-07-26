@@ -2,7 +2,7 @@ alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 
 setCanvasSize();
-alert(canvas.height);
+alert(SETTINGS.small);
 
 render();
 
