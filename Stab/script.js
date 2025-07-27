@@ -3,7 +3,7 @@ document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px
 
 setCanvasSize();
 alert(SETTINGS.small);
-ctx.lineWidth = 10;
+ctx.lineWidth = 2;
 render();
 
 //
