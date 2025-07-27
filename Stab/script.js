@@ -71,6 +71,8 @@ async function render() {
       $("#timme").html(e.data.alpha1.toFixed(6));
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
+      ctx.moveTo(0,0.75*height);
+      ctx.lineTo(width,0.75*height);
       ctx.moveTo(0.5*width,0.75*height);
       let x2 = 0.5*width-0.25*height*Math.sin(e.data.alpha2);
       let y2 = 0.75*height-0.25*height*Math.cos(e.data.alpha2);
