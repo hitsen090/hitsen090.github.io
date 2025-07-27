@@ -1,8 +1,8 @@
-alert(77);
+//alert(77);
 document.documentElement.style.setProperty('--real-vh', `${window.innerHeight}px`);
 
 setCanvasSize();
-alert(SETTINGS.small);
+//alert(SETTINGS.small);
 ctx.lineWidth = 2;
 render();
 
@@ -69,7 +69,7 @@ async function render() {
          workers.terminate();
       }
       $("#timme").html(t.toFixed(3));
-      ctx.clearRect(0,0,1000,1000);
+      ctx.clearRect(0,0,3000,3000);
       ctx.beginPath();
       ctx.moveTo(0,0.9*height);
       ctx.lineTo(width,0.9*height);
