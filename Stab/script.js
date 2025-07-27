@@ -68,7 +68,7 @@ async function render() {
          SETTINGS.stop = false;
          workers.terminate();
       }
-      $("#timme").html(e.data.alpha1.toFixed(6));
+      $("#timme").html(t);
       ctx.clearRect(0,0,1000,1000);
       ctx.beginPath();
       ctx.moveTo(0,0.9*height);
