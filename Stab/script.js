@@ -75,7 +75,7 @@ async function render() {
       ctx.lineTo(width,0.9*height);
       ctx.moveTo(0.5*width,0.9*height);
       let x2 = 0.5*width-0.4*height*Math.sin(e.data.alpha2);
-      let y2 = 0.75*height-0.4*height*Math.cos(e.data.alpha2);
+      let y2 = 0.9*height-0.4*height*Math.cos(e.data.alpha2);
       let x1 = x2 -0.4*height*Math.sin(e.data.alpha1);
       let y1 = y2 - 0.4*height*Math.cos(e.data.alpha1);
       ctx.lineTo(x2,y2);
