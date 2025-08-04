@@ -27,8 +27,8 @@ async function render() {
               } = e.data;
      let w1 = 0;
      let w2 = 0;
-     let alpha2 = alpha;
-     let alpha1 = 0;
+     let alpha2 = 0;
+     let alpha1 = alpha;
      let M1 = 0;
      let M2 = 0;
      setInterval(() => {
