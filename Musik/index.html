@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="h1">Electric Field Simulation</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="coi-serviceworker.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    
+    
     <style>
     .img1 { top: 10px; left: 20px; z-index: 1; }
+    .overlay-grid {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 400px;
+  height: 300px;
+}
+
+
     </style>
 </head>
 <body data-theme="dark">
+    <div class = "overlay-grid">
     <img src = "icons/IMG_4499.png" class = "img1" id = "N1">
     <img src = "icons/IMG_4500.png" class = "img1" id = "N2">
     <img src = "icons/IMG_4501.png" class = "img1" id = "N3">
@@ -29,5 +35,6 @@
     <img src = "icons/IMG_4510.png" class = "img1" id = "N12">
     <img src = "icons/IMG_4511.png" class = "img1" id = "N13">
     <img src = "icons/IMG_4512.png" class = "img1" id = "N14">
+    </div>
 </body>
 </html>
