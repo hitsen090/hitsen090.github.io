@@ -7,20 +7,23 @@
     
     
     <style>
-    .img1 { top: 10px; left: 20px; z-index: 1; }
-    .overlay-grid {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 400px;
-  height: 300px;
-}
+  .stack {
+    position: relative; /* контейнер — опорная точка */
+    width: 300px;
+    height: 200px;
+  }
 
-
-    </style>
+  .stack img {
+    position: absolute; /* все картинки в одной позиции */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style
 </head>
 <body data-theme="dark">
-    <div class = "overlay-grid">
+    <div class = "stack">
     <img src = "icons/IMG_4499.png" class = "img1" id = "N1">
     <img src = "icons/IMG_4500.png" class = "img1" id = "N2">
     <img src = "icons/IMG_4501.png" class = "img1" id = "N3">
