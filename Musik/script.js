@@ -7,7 +7,7 @@ async function aaa(){
 while (true){
   let i = Math.floor(Math.random()*12);
   images[i].hidden = false;
-  await sleep(1500);
+  await sleep(1000);
   images[i].hidden = true;
 }
 }
