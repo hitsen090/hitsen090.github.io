@@ -131,15 +131,15 @@ $("#tools > input").on('change', e => {
     }
 });
 
-$("#val_charge").on('blur', e => {
-    let text = $("#val_charge").text();
+$("#val_speedx").on('blur', e => {
+    let text = $("#val_speedx").text();
     let val = SETTINGS.placedCharge;
     try {
         val = Math.max(Math.min(parseFloat(text), 500), 0.5);
     } catch (e) {}
     if(!isNaN(text)) SETTINGS.placedCharge = val;
-    $("#val_charge").html(SETTINGS.placedCharge.toFixed(2));
-    $("#slider_charge").val(Math.log10(2*SETTINGS.placedCharge));
+    $("#val_speedx").html(SETTINGS.placedCharge.toFixed(2));
+    $("#slider_speedx").val(Math.log10(2*SETTINGS.placedCharge));
 });
 
 $("#btn_clear").on('click', e => {
