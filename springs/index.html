@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="h1">Magnetic Field Simulation</title>
+    <title data-i18n="h1">Springs Simulation</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <script src="coi-serviceworker.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body data-theme="dark">
     <div id="languages">
-        <a href="https://g.da-co.xyz/elfield"><img src="icons/IMG_3752.jpeg" height="25"></a>
+        <a href="https://hitsen090.github.io/magnetfield/"><img src="icons/IMG_3752.jpeg" height="25"></a>
         <a href="#ua" onclick="switchLanguage('ua')"><img src="icons/ua.svg" height="25"></a>
         <a href="#en" onclick="switchLanguage('en')"><img src="icons/gb.svg" height="25"></a>
         <a href="#de" onclick="switchLanguage('de')"><img src="icons/de.svg" height="25"></a>
@@ -25,11 +25,11 @@
         <span id="progress"></span>
         <div id="collapseHold"><div id="collapse"></div></div>
         <div id="controls">
-            <h1 class="heading" data-i18n="h1">Magnetic Field Simulation</h1>
-            <i class="heading" data-i18n="author">by dacoconutchemist</i>
+            <h1 class="heading" data-i18n="h1">Springs Simulation</h1>
+            <i class="heading" data-i18n="author">by MK, thanks to dacoconutchemist</i>
             <div class="spacer"></div>
-            <label><input type="checkbox" id="check_anim" autocomplete="off"><span data-i18n="check_anim"> Smooth mode (not recommended for low-end systems)</span></label> 
-        <!--    <label><input type="checkbox" id="check_magnetic" autocomplete="off"><span data-i18n="check_magnetic"> Magnetic field!</span></label> -->
+        <!--    <label><input type="checkbox" id="check_anim" autocomplete="off"><span data-i18n="check_anim"> Smooth mode (not recommended for low-end systems)</span></label> 
+            <label><input type="checkbox" id="check_magnetic" autocomplete="off"><span data-i18n="check_magnetic"> Magnetic field!</span></label> -->
             <div class="spacer"></div>
             <div id="electricTools" style="width: 100%">
                 <div id="tools">
@@ -51,11 +51,17 @@
                     <label for="tool_powerline" class="m-hidden"><img src="icons/tool_powerline.png"></label>-->
                 </div>
                 <span class="holds" id="hold_charge">
-                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Current of the placed infitite wire:</span>
+                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Start speed in x</span>
                     <span id="hold_charge_inner">
-                        <input type="range" id="slider_charge" min="0" max="1.778" step="0.001" value="0.602" autocomplete="off">
-                        <span id="val_charge" contenteditable>2.00</span>
-                        <span id="chargeunit" data-i18n="chargeunit" data-i18n-m="currentunit"> A</span>
+                        <input type="range" id="slider_speedx" min="-10.0" max="10.0" step="0.01" value="0" autocomplete="off">
+                        <span id="val_charge" contenteditable>0.00</span>
+                        <span id="chargeunit" data-i18n="chargeunit" data-i18n-m="currentunit"> m/s</span>
+                    </span>
+                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Start speed in y</span>
+                    <span id="hold_charge_inner">
+                        <input type="range" id="slider_speedy" min="-10.0" max="10.0" step="0.01" value="0" autocomplete="off">
+                        <span id="val_charge" contenteditable>0.00</span>
+                        <span id="chargeunit" data-i18n="chargeunit" data-i18n-m="currentunit"> m/s</span>
                     </span>
                 </span>
                 <span class="holds" id="hold_voltage" style="display: none;">
@@ -71,7 +77,7 @@
                     <summary>
                         <span data-i18n="howto-summary">How to use</span>
                     </summary>
-                    <span data-i18n="howto-1">&#x2022; To place wire, use left click for a current to us or right click for a current from us. The absolute value of the current is controlled by the slider above.</span>
+                    <span data-i18n="howto-1">&#x2022; To place the mass, use left click for zero start speed or right click for a non-zero speed.</span>
                     <br>
                     <span data-i18n="howto-2">&#x2022; To move wires, drag them around by their colored part using the left mouse button.</span>
                     <br>
@@ -93,25 +99,25 @@
                 </details>-->
                 <details class="m-hidden">
                     <summary>
-                        <span data-i18n="powerline-summary">Magnetic field lines</span>
-                        <input type="checkbox" id="check_powerline" checked autocomplete="off">
+                        <span data-i18n="powerline-summary">Time</span>
+                        <input type="checkbox" id="check_time" checked autocomplete="on">
                     </summary>
-                    <span data-i18n="slider_powerline">Magnetic field line amount</span>
-                    <input type="range" id="slider_powerline" min="3" max="7" step="1" value="4" autocomplete="off">
+                    <span data-i18n="slider_timebase">Calculate movement every...</span>
+                    <input type="range" id="slider_timebase" min="0.001" max="1" step="0.001" value="0.01" autocomplete="off">
                    <!-- <input type="range" id="slider_powerline2" min="1" max="100" step="1" value="1" autocomplete="off">-->
-                    <span data-i18n="slider_powerline_d">Magnetic field line opacity</span>
-                    <input type="range" id="slider_powerline_d" min="0.04" max="1" step="0.001" value="1" autocomplete="off">
-                    <span data-i18n="slider_powerline_t">Magnetic field line thickness</span>
+                    <span data-i18n="slider_second">One real second is ... seconds in simulation</span>
+                    <input type="range" id="slider_second" min="0.1" max="100" step="0.1" value="1" autocomplete="off">
+                   <!-- <span data-i18n="slider_powerline_t">Magnetic field line thickness</span>
                     <input type="range" id="slider_powerline_t" min="1" max="6" step="1" value="2" autocomplete="off">
                     <span data-i18n="slider_powerline_q">Magnetic field line quality</span>
                     <input type="range" id="slider_powerline_q" min="0.2" max="1" step="0.001" value="0.5" autocomplete="off">
                     <span data-i18n="color_powerline">Color</span>
-                    <input type="color" id="color_powerline" value="#00ff00" autocomplete="off">
+                    <input type="color" id="color_powerline" value="#00ff00" autocomplete="off">-->
                 </details>
                 <details>
                     <summary>
-                        <span data-i18n="E-summary" data-i18n-m="B-summary">Magnetic field direction</span>
-                        <input type="checkbox" id="check_E" autocomplete="off">
+                        <span data-i18n="Springs-summary" data-i18n-m="B-summary">Springs</span>
+                       <!-- <input type="checkbox" id="check_E" autocomplete="off">-->
                     </summary>
                     <span data-i18n="slider_E">Magnetic field direction size</span>
                     <input type="range" id="slider_E" min="7" max="40" step="0.01" value="20" autocomplete="off">
@@ -129,14 +135,14 @@
                     </summary>
                     <label><input type="checkbox" id="check_bg" checked="true" autocomplete="off"><span data-i18n="check_bg"> Enable background</span></label>
                     <span data-i18n="color_bg_def">Default color</span>
-                    <input type="color" id="color_bg_def" value="#000000" autocomplete="off">
-                    <span data-i18n="color_pos" data-i18n-m="color_away">Positive color</span>
-                    <input type="color" id="color_pos" value="#ff0000" autocomplete="off">
+                    <input type="color" id="color_bg_def" value="#ffffff" autocomplete="off">
+                    <span data-i18n="color_pos" data-i18n-m="color_away">Spring color</span>
+                    <input type="color" id="color_spring" value="#000000" autocomplete="off">
                  <!--   <span data-i18n="color_neg" data-i18n-m="color_to">Negative color</span>
                     <input type="color" id="color_neg" value="#0000ff" autocomplete="off">-->
-                    <span data-i18n="color_outline" data-i18n-m="color_outlineM">Current outline color</span>
+                  <!--  <span data-i18n="color_outline" data-i18n-m="color_outlineM">Current outline color</span>
                     <input type="color" id="color_outline" value="#ffffff" autocomplete="off">
-                    <button id="btn_clear" data-i18n="clear" data-i18n-m="clearM">Delete wire</button>
+                    <button id="btn_clear" data-i18n="clear" data-i18n-m="clearM">Delete wire</button>-->
                     <button id="btn_reset" data-i18n="reset">Reset all settings to default</button>
                 </details>
             </div>
