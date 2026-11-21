@@ -51,13 +51,13 @@
                     <label for="tool_powerline" class="m-hidden"><img src="icons/tool_powerline.png"></label>-->
                 </div>
                 <span class="holds" id="hold_charge">
-                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Start speed in x</span>
+                    <span data-i18n="speedxlabel" data-i18n-m="speedylabel">Start speed in x</span>
                     <span id="hold_charge_inner">
                         <input type="range" id="slider_speedx" min="-10.0" max="10.0" step="0.01" value="0" autocomplete="off">
                         <span id="val_charge" contenteditable>0.00</span>
                         <span id="chargeunit" data-i18n="chargeunit" data-i18n-m="currentunit"> m/s</span>
                     </span>
-                    <span data-i18n="chargelabel" data-i18n-m="currentlabel">Start speed in y</span>
+                    <span data-i18n="speedylabel" data-i18n-m="speedylabel">Start speed in y</span>
                     <span id="hold_charge_inner">
                         <input type="range" id="slider_speedy" min="-10.0" max="10.0" step="0.01" value="0" autocomplete="off">
                         <span id="val_charge" contenteditable>0.00</span>
@@ -121,6 +121,10 @@
                     </summary>
                     <span data-i18n="slider_k">Spring konstant k</span>
                     <input type="range" id="slider_k" min="0" max="100" step="1" value="20" autocomplete="off">
+                     <span id="springunit" data-i18n="springunit" data-i18n-m="springunit"> N/m</span>
+                    <span data-i18n="slider_l">Rest length of the spring</span>
+                     <input type="range" id="slider_l" min="0" max="100" step="1" value="10" autocomplete="off">
+                     <span id="lengthunit" data-i18n="lengthunit" data-i18n-m="lengthunit"> m</span>
                     <span data-i18n="slider_springx">Position x</span>
                     <input type="text" id="slider_springx" autocomplete="off">
                     <span data-i18n="slider_springy">Positiony</span>
