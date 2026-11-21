@@ -99,7 +99,7 @@
                 </details>-->
                 <details class="m-hidden">
                     <summary>
-                        <span data-i18n="powerline-summary">Time</span>
+                        <span data-i18n="time-summary">Time</span>
                         <input type="checkbox" id="check_time" checked autocomplete="on">
                     </summary>
                     <span data-i18n="slider_timebase">Calculate movement every...</span>
@@ -116,18 +116,19 @@
                 </details>
                 <details>
                     <summary>
-                        <span data-i18n="Springs-summary" data-i18n-m="B-summary">Springs</span>
+                        <span data-i18n="Springs-summary" data-i18n-m="Springs-summary">Springs</span>
                        <!-- <input type="checkbox" id="check_E" autocomplete="off">-->
                     </summary>
-                    <span data-i18n="slider_E">Magnetic field direction size</span>
-                    <input type="range" id="slider_E" min="7" max="40" step="0.01" value="20" autocomplete="off">
-                    <span data-i18n="slider_E_d">Magnetic field direction opacity</span>
-                    <input type="range" id="slider_E_d" min="0.04" max="1" step="0.001" value="1" autocomplete="off">
-                    <span data-i18n="slider_E_t">Magnetic field direction thickness</span>
-                    <input type="range" id="slider_E_t" min="2" max="6" step="0.01" value="2" autocomplete="off">
-                    <span data-i18n="color_E">Color</span>
+                    <span data-i18n="slider_k">Spring konstant k</span>
+                    <input type="range" id="slider_k" min="0" max="100" step="1" value="20" autocomplete="off">
+                    <span data-i18n="slider_springx">Position x</span>
+                    <input type="text" id="slider_springx" autocomplete="off">
+                    <span data-i18n="slider_springy">Positiony</span>
+                    <input type="text" id="slider_springsy" autocomplete="off">
+                     <button id="btn_add" data-i18n="addbutton">Add or change</button>
+                  <!--  <span data-i18n="color_E">Color</span>
                     <input type="color" id="color_E" value="#ff00ff" autocomplete="off">
-                    <label><input type="checkbox" id="check_E_head" checked="true" autocomplete="off"><span data-i18n="check_E_head"> Arrowheads</span></label>
+                    <label><input type="checkbox" id="check_E_head" checked="true" autocomplete="off"><span data-i18n="check_E_head"> Arrowheads</span></label>-->
                 </details>
                 <details>
                     <summary>
