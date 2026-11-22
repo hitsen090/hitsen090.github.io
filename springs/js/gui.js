@@ -16,16 +16,19 @@ let listeners = [
         SETTINGS.placedCharge = (10**parseFloat(e.target.value)) / 2;
         updateJSI18N();
     }},
+    {sel: "#slider_speedx", type: "slider", var: "speedx", def: "0", defVar: 0.0, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
+    {sel: "#slider_speedy", type: "slider", var: "speedy", def: "0", defVar: 0.0, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
+    {sel: "#check_magnetic", type: "checkbox", var: "MAGNETIC", def: false, defVar: false},
     {sel: "#check_magnetic", type: "checkbox", var: "MAGNETIC", def: false, defVar: false},
     {sel: "#voltage_mode", type: "checkbox", var: "voltageInftyMode", def: false, defVar: false},
     {sel: "#angle_mode", type: "checkbox", var: "angleDistanceMode", def: false, defVar: false},
     {sel: "#powerlinetool_arrows", type: "checkbox", var: "powerlineToolArrows", def: true, defVar: true},
     {sel: "#check_equipot", type: "checkbox", var: "drawEquipotential", def: false, defVar: false},
-    {sel: "#slider_k", type: "slider", var: "feder", def: "20", defVar: 20, preprocess: v => parseFloat(v)},
-    {sel: "#slider_l", type: "slider", var: "lengt", def: "10", defVar: 10, preprocess: v => parseFloat(v)},
-    {sel: "#slider_timebase", type: "slider", var: "timebase", def: "0.01", defVar: 0.01, preprocess: v => parseFloat(v)},
+    {sel: "#slider_k", type: "slider", var: "feder", def: "20", defVar: 20, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
+    {sel: "#slider_l", type: "slider", var: "lengt", def: "10", defVar: 10, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
+    {sel: "#slider_timebase", type: "slider", var: "timebase", def: "0.01", defVar: 0.01, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
     {sel: "#check_E", type: "checkbox", var: "drawArrows", def: false, defVar: false},
-    {sel: "#slider_second", type: "slider", var: "secondto", def: "1", defVar: 1, preprocess: v => parseFloat(v)},
+    {sel: "#slider_second", type: "slider", var: "secondto", def: "1", defVar: 1, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
     {sel: "#slider_E_d", type: "slider", var: "arrowsOpacity", def: "1", defVar: 1, preprocess: v => parseFloat(v)},
     {sel: "#slider_E_t", type: "slider", var: "arrowsThickness", def: "2", defVar: 2, preprocess: v => parseInt(v)},
     {sel: "#check_E_head", type: "checkbox", var: "drawArrowHeads", def: true, defVar: true},
@@ -185,6 +188,8 @@ function updateJSI18N() {
     }
     // update Coulomb units
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2))
+    $("#val_speedx").html(SETTINGS.speedx.toFixed(2))
+    $("#val_speedy").html(SETTINGS.speedy.toFixed(2))
 }
 
 let draggingIndex = -1;
