@@ -31,11 +31,11 @@ let listeners = [
     {sel: "#angle_mode", type: "checkbox", var: "angleDistanceMode", def: false, defVar: false},
     {sel: "#powerlinetool_arrows", type: "checkbox", var: "powerlineToolArrows", def: true, defVar: true},
     {sel: "#check_equipot", type: "checkbox", var: "drawEquipotential", def: false, defVar: false},
-    {sel: "#slider_k", event: "input", type: "", var: "feder", def: "20", defVar: 20.0, callback: e=>{
+    {sel: "#slider_k", event: "input", type: "", var: "feder", def: "20.00", defVar: 20.0, callback: e=>{
         SETTINGS.feder = parseFloat(e.target.value);
         updateJSI18N();
     }},
-    {sel: "#slider_l", event: "input", type: "", var: "lengt", def: "10", defVar: 10.0, callback: e=>{
+    {sel: "#slider_l", event: "input", type: "", var: "lengt", def: "10.00", defVar: 10.0, callback: e=>{
         SETTINGS.lengt = parseFloat(e.target.value);
         updateJSI18N();
     }},
@@ -44,7 +44,7 @@ let listeners = [
         updateJSI18N();
     }},
     {sel: "#check_E", type: "checkbox", var: "drawArrows", def: false, defVar: false},
-    {sel: "#slider_second", event: "input", type: "", var: "secondto", def: "1", defVar: 1.0, callback: e=>{
+    {sel: "#slider_second", event: "input", type: "", var: "secondto", def: "1.00", defVar: 1.0, callback: e=>{
         SETTINGS.secondto = parseFloat(e.target.value);
         updateJSI18N();
     }},
