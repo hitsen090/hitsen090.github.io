@@ -37,10 +37,14 @@ const k = 8.98755179e9; // \frac{1}{4\pi\epsilon_0}
 const kM = Math.PI*4*10**-7; // \frac{\mu_0}{2\pi} (yes, this turns out to be 2e-7 with a precision of 9 digits)
 
 let charges = [];
+let springs = [];
 
 function getChargeRadius(i) {
     //return Math.sqrt(Math.abs(charges[i].q) * 1e6) * 5
     return 2.55*Math.log(Math.abs(charges[i].q)) + 40.52;
+}
+function getSpringThickness(i){
+  return 1;
 }
 
 var INSECURE_CONTEXT_DEBUG_MODE = false;
