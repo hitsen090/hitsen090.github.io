@@ -103,12 +103,16 @@
                         <input type="checkbox" id="check_time" checked autocomplete="on">
                     </summary>
                     <span data-i18n="slider_timebase">Calculate movement every...</span>
-                    <input type="range" id="slider_timebase" min="0.001" max="1" step="0.001" value="0.01" autocomplete="off">
-                     <span id="val_timebase" contenteditable>0.01</span>
+                    <span>
+                       <input type="range" id="slider_timebase" min="0.001" max="1" step="0.001" value="0.01" autocomplete="off">
+                       <span id="val_timebase" contenteditable>0.01</span>
+                    </span>
                    <!-- <input type="range" id="slider_powerline2" min="1" max="100" step="1" value="1" autocomplete="off">-->
                     <span data-i18n="slider_second">One real second is ... seconds in simulation</span>
-                    <input type="range" id="slider_second" min="0.1" max="100" step="0.1" value="1" autocomplete="off">
-                     <span id="val_second" contenteditable>1</span>
+                    <span>
+                       <input type="range" id="slider_second" min="0.1" max="100" step="0.1" value="1" autocomplete="off">
+                       <span id="val_second" contenteditable>1</span>
+                    </span>
                         
                    <!-- <span data-i18n="slider_powerline_t">Magnetic field line thickness</span>
                     <input type="range" id="slider_powerline_t" min="1" max="6" step="1" value="2" autocomplete="off">
@@ -123,13 +127,17 @@
                        <!-- <input type="checkbox" id="check_E" autocomplete="off">-->
                     </summary>
                     <span data-i18n="slider_k">Spring konstant k</span>
-                    <input type="range" id="slider_k" min="0" max="100" step="1" value="20" autocomplete="off">
-                     <span id="val_k" contenteditable>20</span>
-                     <span id="springunit" data-i18n="springunit" data-i18n-m="springunit"> N/m</span>
+                    <span>
+                        <input type="range" id="slider_k" min="0" max="100" step="1" value="20" autocomplete="off">
+                        <span id="val_k" contenteditable>20</span>
+                        <span id="springunit" data-i18n="springunit" data-i18n-m="springunit"> N/m</span>
+                    </span>
                     <span data-i18n="slider_l">Rest length of the spring</span>
-                     <input type="range" id="slider_l" min="0" max="100" step="1" value="10" autocomplete="off">
-                    <span id="val_l" contenteditable>10</span>
-                     <span id="lengthunit" data-i18n="lengthunit" data-i18n-m="lengthunit"> m</span>
+                    <span>
+                        <input type="range" id="slider_l" min="0" max="100" step="1" value="10" autocomplete="off">
+                        <span id="val_l" contenteditable>10</span>
+                        <span id="lengthunit" data-i18n="lengthunit" data-i18n-m="lengthunit"> m</span>
+                    </span>
                     <input type="text" id="slider_springx" autocomplete="off">
                     <span data-i18n="slider_springx">x</span>
                     <input type="text" id="slider_springsy" autocomplete="off">
