@@ -16,6 +16,10 @@ let listeners = [
         SETTINGS.placedCharge = (10**parseFloat(e.target.value)) / 2;
         updateJSI18N();
     }},
+    {sel: "#slider_speedx", event: "input", type: "", var: "speedx", def: "0", defVar: 0.0, callback: e=>{
+        SETTINGS.speedx = parseFloat(e.target.value);
+        updateJSI18N();
+    }},
     {sel: "#slider_speedx", event: "input", type: "slider", var: "speedx", def: "0", defVar: 0.0, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
     {sel: "#slider_speedy", event: "input", type: "slider", var: "speedy", def: "0", defVar: 0.0, preprocess: v => parseFloat(v), callback: e=>{updateJSI18N()}},
     {sel: "#check_magnetic", type: "checkbox", var: "MAGNETIC", def: false, defVar: false},
