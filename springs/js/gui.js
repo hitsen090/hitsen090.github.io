@@ -190,6 +190,10 @@ function updateJSI18N() {
     $("#val_charge").html(SETTINGS.placedCharge.toFixed(2))
     $("#val_speedx").html(SETTINGS.speedx.toFixed(2))
     $("#val_speedy").html(SETTINGS.speedy.toFixed(2))
+    $("#val_k").html(SETTINGS.feder.toFixed(2))
+    $("#val_l").html(SETTINGS.lengt.toFixed(2))
+    $("#val_timebase").html(SETTINGS.timebase.toFixed(2))
+    $("#val_second").html(SETTINGS.secondto.toFixed(2))
 }
 
 let draggingIndex = -1;
