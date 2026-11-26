@@ -174,7 +174,6 @@ $("#btn_clear").on('click', e => {
 });
 
 $("#btn_reset").on('click', e => {
-    alert(9);
     if (confirm(I18N[LANG].reset_msg)) {
         // reset all settings to default values
         for (let i of listeners) {
@@ -190,10 +189,10 @@ $("#btn_reset").on('click', e => {
 });
 
 $("#btn_add").on('click', e => {
-    alert(8);
     for (let i = 0; i < 29; i++){
         if (springs[i][2] == 0){
             springs[i] = [parseInt($("#text_springx").val()), parseInt($("#text_springy").val()), feder, lengt];
+            alert("#btn_spring"+String(i));
             $("#btn_spring"+String(i)).prop("hidden", false);
             $("#btn_spring"+String(i)).text(String(springs[i][0]) + " " + String(springs[i][1]));
             break;
