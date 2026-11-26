@@ -193,7 +193,7 @@ $("#btn_add").on('click', e => {
         if (springs[i][2] == 0){
             springs[i] = [parseInt($("#text_springx").val()), parseInt($("#text_springy").val()), feder, lengt];
             $("#btn_spring"+String(i)).show();
-            $("#btn_spring"+String(i)).val(String(springs[i][0]) + " " + String(springs[i][1]));
+            $("#btn_spring"+String(i)).text(String(springs[i][0]) + " " + String(springs[i][1]));
             break;
         }
     }
