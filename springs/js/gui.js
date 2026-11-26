@@ -188,6 +188,14 @@ $("#btn_reset").on('click', e => {
     }
 });
 
+$("#btn_reset").on('click', e => {
+    for (let i = 0; i < 29; i++){
+        if (springs[i][0] == 0){
+            springs[i] = []
+        }
+    }
+});
+
 $('#check_magnetic').on('change', e => {
     let magnetic = $('#check_magnetic').is(":checked");
     if (magnetic) {
