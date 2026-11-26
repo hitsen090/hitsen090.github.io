@@ -192,7 +192,7 @@ $("#btn_add").on('click', e => {
     alert(springs.length);
     for (let i = 0; i < 29; i++){
         if (springs[i][2] == 0){
-            alert(8);
+            alert($("#text_springx").val());
             springs[i] = [parseInt($("#text_springx").val()), parseInt($("#text_springy").val()), feder, lengt];
             alert("#btn_spring"+String(i));
             $("#btn_spring"+String(i)).prop("hidden", false);
