@@ -37,7 +37,7 @@ const k = 8.98755179e9; // \frac{1}{4\pi\epsilon_0}
 const kM = Math.PI*4*10**-7; // \frac{\mu_0}{2\pi} (yes, this turns out to be 2e-7 with a precision of 9 digits)
 
 let charges = [];
-let springs = Array.from({ length: 28 }, () => Array(4).fill(0));
+let springs = Array.from({ length: 29 }, () => Array(4).fill(0));
 
 function getChargeRadius(i) {
     //return Math.sqrt(Math.abs(charges[i].q) * 1e6) * 5
