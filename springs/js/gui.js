@@ -174,6 +174,7 @@ $("#btn_clear").on('click', e => {
 });
 
 $("#btn_reset").on('click', e => {
+    alert(9);
     if (confirm(I18N[LANG].reset_msg)) {
         // reset all settings to default values
         for (let i of listeners) {
