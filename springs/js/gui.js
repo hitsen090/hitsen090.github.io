@@ -188,10 +188,11 @@ $("#btn_reset").on('click', e => {
     }
 });
 
-$("#btn_reset").on('click', e => {
+$("#btn_add").on('click', e => {
     for (let i = 0; i < 29; i++){
-        if (springs[i][0] == 0){
-            springs[i] = []
+        if (springs[i][2] == 0){
+            springs[i] = [$("text_springx").value, $("text_springy").value, feder, lengt];
+            
         }
     }
 });
