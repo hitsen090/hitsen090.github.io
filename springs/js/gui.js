@@ -189,7 +189,7 @@ $("#btn_reset").on('click', e => {
 });
 
 $("#btn_add").on('click', e => {
-    for (let i = 0; i < 29; i++){
+    for (let i = 0; i < 30; i++){
         if (springs[i][2] == 0){
             springs[i] = [parseInt($("#text_springx").value), parseInt($("#text_springy").value), feder, lengt];
             $("#btn_spring"+String(i)).show();
