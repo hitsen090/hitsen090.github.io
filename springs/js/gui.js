@@ -189,10 +189,10 @@ $("#btn_reset").on('click', e => {
 });
 
 $("#btn_add").on('click', e => {
-    alert(springs.length);
+    alert(819);
     for (let i = 0; i < 29; i++){
         if (springs[i][2] == 0){
-            alert($("#text_springx").val());
+            alert(parseInt($("#text_springx").val()));
             springs[i] = [parseInt($("#text_springx").val()), parseInt($("#text_springy").val()), feder, lengt];
             alert("#btn_spring"+String(i));
             $("#btn_spring"+String(i)).prop("hidden", false);
