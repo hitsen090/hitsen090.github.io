@@ -189,6 +189,35 @@ $("#btn_reset").on('click', e => {
 });
 
 $("#btn_add").on('click', e => {
+    for (let i = 0; i < 29; i++){
+        if (springs[i][2] == 0){
+            springs[i] = [parseInt($("#text_springx").val()), parseInt($("#text_springy").val()), SETTINGS.feder, SETTINGS.lengt];
+            $("#btn_spring"+String(i)).prop("hidden", false);
+            $("#btn_spring"+String(i)).text(String(springs[i][0]) + " " + String(springs[i][1]));
+            break;
+        }
+    }
+});
+
+$("#btn_spring0").on('click', e => {
+    $("#btn_spring0").prop("hidden", true);
+    $("#text_springx").val(springs[0][0]);
+    $("#text_springy").val(springs[0][1]);
+    SETTINGS.feder = springs[0][2];
+    SETTINGS.lengt = springs[0][3];
+    springs[0] = [0,0,0,0];
+});
+
+$("#btn_spring1").on('click', e => {
+    $("#btn_spring1").prop("hidden", true);
+    $("#text_springx").val(springs[1][0]);
+    $("#text_springy").val(springs[1][1]);
+    SETTINGS.feder = springs[1][2];
+    SETTINGS.lengt = springs[1][3];
+    springs[1] = [0,0,0,0];
+});
+
+$("#btn_add").on('click', e => {
     alert(8199);
     for (let i = 0; i < 29; i++){
         if (springs[i][2] == 0){
